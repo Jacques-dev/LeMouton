@@ -1,12 +1,14 @@
 package shape;
 
+import point.Point;
+
 public interface ShapesMethodes {
 	
-	public void homothety();
-	public void translation();
-	public void ratation();
-	public void centralSymmetry();
-	public void axialSymmetry();
+	public Shape homothety(Point p, int ratio);
+	public Shape translation(Point p);
+	public Shape rotation();
+	public Shape centralSymmetry();
+	public Shape axialSymmetry(String axe);
 	public double area();
 	public double perimeter();
 	

@@ -1,5 +1,7 @@
 package shape;
 
+import java.util.Objects;
+
 import point.Point;
 
 public class Line extends Shape {
@@ -12,36 +14,6 @@ public class Line extends Shape {
 	}
 	
 	@Override
-	public void homothety() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void translation() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void ratation() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void centralSymmetry() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void axialSymmetry() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public double area() {
 		return 0;
 	}
@@ -50,6 +22,69 @@ public class Line extends Shape {
 	public double perimeter() {
 		return p1.distance(p2);
 	}
+
+
+
+	@Override
+	public Shape homothety(Point origine, int ratio) {
+		int x1 = origine.getX() + ratio * (p1.getX() - origine.getX());
+		int y1 = origine.getY() + ratio * (p1.getX() - origine.getY());
+		
+		int x2 = origine.getX() + ratio * (p2.getX() - origine.getX());
+		int y2 = origine.getY() + ratio * (p2.getX() - origine.getY());
+		return new Line(new Point(x1,y1), new Point(x2,y2));
+	}
+
+
+
+	@Override
+	public Shape translation(Point p) {
+		return new Line(translate(p1,p), translate(p2,p));
+	}
+
+
+
+	@Override
+	public Shape rotation() { //AFAIRE---------------------------------------------------
+		
+		return null;
+	}
+
+
+
+	@Override
+	public Shape centralSymmetry() {
+		return new Line(symmetry(p2), symmetry(p1));
+	}
+
+
+
+	@Override
+	public Shape axialSymmetry(String axe) {
+		switch (axe) {
+		case "x":
+			return new Line(symmetryX(p1), symmetryX(p2));
+		case "y":
+			return new Line(symmetryY(p2), symmetryY(p1));
+		default:
+			throw new IllegalArgumentException("x or y argument only");
+		}
+	}
 	
+	@Override
+	public String toString() {
+		return p1.toString() + p2.toString();
+	}
 	
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Line)) {return false;}
+		Line x = (Line) o;
+		return p1.equals(x.p1) && p2.equals(x.p2);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(p1,p2);
+	}
 }
