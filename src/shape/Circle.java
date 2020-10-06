@@ -26,9 +26,10 @@ public class Circle extends Shape {
 	}
 
 	@Override
-	public Shape homothety(Point p, int ratio) { //AFAIRE---------------------------------------------------
-		
-		return null;
+	public Shape homothety(Point p, int ratio) {
+		double x = (center.getX()-p.getX())*ratio;
+		double y = (center.getY()-p.getY())*ratio;
+		return new Circle(new Point(x+center.getX(),y+center.getY()), radius*ratio);
 	}
 
 	@Override

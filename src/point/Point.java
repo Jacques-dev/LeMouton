@@ -3,12 +3,12 @@ package point;
 import java.util.Objects;
 
 public class Point {
-	private final int x;
-	private final int y;
+	private final double x;
+	private final double y;
 	
-	public Point(int x, int y) {
-		this.x = x;
-		this.y = y;
+	public Point(double x2, double y2) {
+		this.x = x2;
+		this.y = y2;
 	}
 	
 	public Point() {
@@ -19,11 +19,11 @@ public class Point {
 		this(p.getX(), p.getY());
 	}
 	
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 	
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 	

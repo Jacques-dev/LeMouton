@@ -37,8 +37,10 @@ public class Ellipse extends Shape {
     }
 
 	@Override
-	public Shape homothety(Point p, int ratio) { //AFAIRE---------------------------------------------------
-		return null;
+	public Shape homothety(Point p, int ratio) {
+		double x = (center.getX()-p.getX())*ratio;
+		double y = (center.getY()-p.getY())*ratio;
+		return new Ellipse(new Point(x+center.getX(),y+center.getY()), grandAxe*ratio, petitAxe*ratio);
 	}
 
 	@Override
@@ -47,8 +49,8 @@ public class Ellipse extends Shape {
 	}
 
 	@Override
-	public Shape rotation() { //AFAIRE---------------------------------------------------
-		return null;
+	public Shape rotation() {
+		return new Ellipse(center, petitAxe, grandAxe);
 	}
 
 	@Override

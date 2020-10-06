@@ -27,11 +27,11 @@ public class Line extends Shape {
 
 	@Override
 	public Shape homothety(Point origine, int ratio) {
-		int x1 = origine.getX() + ratio * (p1.getX() - origine.getX());
-		int y1 = origine.getY() + ratio * (p1.getX() - origine.getY());
+		double x1 = origine.getX() + ratio * (p1.getX() - origine.getX());
+		double y1 = origine.getY() + ratio * (p1.getY() - origine.getY());
 		
-		int x2 = origine.getX() + ratio * (p2.getX() - origine.getX());
-		int y2 = origine.getY() + ratio * (p2.getX() - origine.getY());
+		double x2 = origine.getX() + ratio * (p2.getX() - origine.getX());
+		double y2 = origine.getY() + ratio * (p2.getY() - origine.getY());
 		return new Line(new Point(x1,y1), new Point(x2,y2));
 	}
 
@@ -45,9 +45,17 @@ public class Line extends Shape {
 
 
 	@Override
-	public Shape rotation() { //AFAIRE---------------------------------------------------
+	public Shape rotation() {
+		double xCentre = (p1.getX()+p2.getX())/2;
+		double yCentre = (p1.getY()+p2.getY())/2;
 		
-		return null;
+		double p1x = xCentre + (p1.getY() - yCentre);
+		double p1y = yCentre + (p1.getX() - xCentre);
+		
+		double p2x = xCentre + (p2.getY() - yCentre);
+		double p2y = yCentre + (p2.getX() - xCentre);
+		
+		return new Line(new Point(p1x, p1y), new Point(p2x, p2y));
 	}
 
 
