@@ -23,14 +23,31 @@ public class Polygones extends Shape {
 	}
 	
 	@Override
-	public Shape homothety(Point p, int ratio) {
+	public double area() {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
+	}
+
+	@Override
+	public double perimeter() {
+		double res = 0;
+		for (Line l : this.lines) {
+			res += l.perimeter();
+		}
+		return res;
+	}
+	
+	@Override
+	public Shape homothety(Point p, int ratio) {
+		ArrayList<Line> tmpLines = new ArrayList<Line>();
+		for (int i = 0; i < this.lines.size(); i++) {
+			tmpLines.add(this.lines.get(i).homothety(p, ratio));
+		}
+		return new Polygones(tmpLines);
 	}
 
 	@Override
 	public Shape translation(Point p) {
-		// TODO Auto-generated method stub
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).translation(p));
@@ -40,31 +57,28 @@ public class Polygones extends Shape {
 
 	@Override
 	public Shape rotation() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Line> tmpLines = new ArrayList<Line>();
+		for (int i = 0; i < this.lines.size(); i++) {
+			tmpLines.add(this.lines.get(i).rotationFromPoint(this.center));
+		}
+		return new Polygones(tmpLines);
 	}
 
 	@Override
 	public Shape centralSymmetry() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Line> tmpLines = new ArrayList<Line>();
+		for (int i = 0; i < this.lines.size(); i++) {
+			tmpLines.add(this.lines.get(i).centralSymmetryFromPoint(this.center));
+		}
+		return new Polygones(tmpLines);
 	}
 
 	@Override
 	public Shape axialSymmetry(String axe) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public double area() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double perimeter() {
-		// TODO Auto-generated method stub
-		return 0;
+		ArrayList<Line> tmpLines = new ArrayList<Line>();
+		for (int i = 0; i < this.lines.size(); i++) {
+			tmpLines.add(this.lines.get(i).axialSymmetryFromPoint(this.center, axe));
+		}
+		return new Polygones(tmpLines);
 	}
 }

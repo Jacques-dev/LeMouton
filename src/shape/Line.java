@@ -26,7 +26,7 @@ public class Line extends Shape {
 
 
 	@Override
-	public Shape homothety(Point origine, int ratio) {
+	public Line homothety(Point origine, int ratio) {
 		double x1 = origine.getX() + ratio * (p1.getX() - origine.getX());
 		double y1 = origine.getY() + ratio * (p1.getY() - origine.getY());
 		
@@ -58,15 +58,37 @@ public class Line extends Shape {
 		return new Line(new Point(p1x, p1y), new Point(p2x, p2y));
 	}
 
+	
+	
+	public Line rotationFromPoint(Point p) {	
+		double p1x = p.getX() + (p1.getY() - p.getY());
+		double p1y = p.getY() + (p1.getX() - p.getX());
+		
+		double p2x = p.getX() + (p2.getY() - p.getY());
+		double p2y = p.getY() + (p2.getX() - p.getX());
+		
+		return new Line(new Point(p1x, p1y), new Point(p2x, p2y));
+	}
 
 
+	
 	@Override
 	public Shape centralSymmetry() {
 		return new Line(symmetry(p2), symmetry(p1));
 	}
+	
+	
 
+	public Line centralSymmetryFromPoint(Point p) {
+		double p1x = p.getX() + (p.getX() - this.p1.getX());
+		double p1y = p.getY() + (p.getY() - this.p1.getY());
+		double p2x = p.getX() + (p.getX() - this.p2.getX());
+		double p2y = p.getY() + (p.getY() - this.p2.getY());
+		return new Line(new Point(p1x, p1y), new Point(p2x, p2y));
+	}
 
-
+	
+	
 	@Override
 	public Shape axialSymmetry(String axe) {
 		switch (axe) {
@@ -74,6 +96,25 @@ public class Line extends Shape {
 			return new Line(symmetryX(p1), symmetryX(p2));
 		case "y":
 			return new Line(symmetryY(p2), symmetryY(p1));
+		default:
+			throw new IllegalArgumentException("x or y argument only");
+		}
+	}
+	
+	
+	
+	public Line axialSymmetryFromPoint(Point p, String axe) {
+		double p1modified;
+		double p2modified;
+		switch (axe) {
+		case "x":
+			p1modified = p.getY() + (p.getY() - this.p1.getY());
+			p2modified = p.getY() + (p.getY() - this.p2.getY());
+			return new Line(new Point(this.p1.getX(), p1modified), new Point(this.p2.getX(), p2modified));
+		case "y":
+			p1modified = p.getX() + (p.getX() - this.p1.getX());
+			p2modified = p.getX() + (p.getX() - this.p2.getX());
+			return new Line(new Point(p1modified, this.p1.getY()), new Point(p2modified, this.p2.getY()));
 		default:
 			throw new IllegalArgumentException("x or y argument only");
 		}
