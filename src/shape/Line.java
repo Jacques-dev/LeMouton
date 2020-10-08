@@ -38,7 +38,7 @@ public class Line extends Shape {
 
 
 	@Override
-	public Shape translation(Point p) {
+	public Line translation(Point p) {
 		return new Line(translate(p1,p), translate(p2,p));
 	}
 
@@ -94,5 +94,13 @@ public class Line extends Shape {
 	@Override
 	public int hashCode() {
 		return Objects.hash(p1,p2);
+	}
+
+	public Point getP1() {
+		return p1;
+	}
+
+	public Point getP2() {
+		return p2;
 	}
 }
