@@ -11,14 +11,6 @@ public abstract class Shape implements ShapesMethodes {
 	public Point symmetry(Point p) {
 		return new Point(-p.getX(),-p.getY());
 	}
-	
-	public Point symmetryX(Point p) {
-		return new Point(p.getX(),-p.getY());
-	}
-	
-	public Point symmetryY(Point p) {
-		return new Point(-p.getX(),p.getY());
-	}
 
 	public int compareToPerimeters(final Shape shape) {
 		return (int) (this.perimeter() - shape.perimeter());

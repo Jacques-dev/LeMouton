@@ -6,9 +6,9 @@ public interface ShapesMethodes {
 	
 	public Shape homothety(Point p, int ratio);
 	public Shape translation(Point p);
-	public Shape rotation();
+	public Shape rotation(int angle);
 	public Shape centralSymmetry();
-	public Shape axialSymmetry(String axe);
+	public Shape axialSymmetry(Line l);
 	public double area();
 	public double perimeter();
 	

@@ -45,7 +45,7 @@ public class Line extends Shape {
 
 
 	@Override
-	public Shape rotation() {
+	public Shape rotation(int angle) {
 		double xCentre = (p1.getX()+p2.getX())/2;
 		double yCentre = (p1.getY()+p2.getY())/2;
 		
@@ -90,15 +90,8 @@ public class Line extends Shape {
 	
 	
 	@Override
-	public Shape axialSymmetry(String axe) {
-		switch (axe) {
-		case "x":
-			return new Line(symmetryX(p1), symmetryX(p2));
-		case "y":
-			return new Line(symmetryY(p2), symmetryY(p1));
-		default:
-			throw new IllegalArgumentException("x or y argument only");
-		}
+	public Shape axialSymmetry(Line l) {
+		
 	}
 	
 	

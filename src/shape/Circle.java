@@ -38,7 +38,7 @@ public class Circle extends Shape {
 	}
 
 	@Override
-	public Shape rotation() {
+	public Shape rotation(int angle) {
 		return this;
 	}
 
@@ -48,15 +48,8 @@ public class Circle extends Shape {
 	}
 
 	@Override
-	public Shape axialSymmetry(String axe) {
-		switch (axe) {
-		case "x":
-			return new Circle(symmetryX(center), radius);
-		case "y":
-			return new Circle(symmetryY(center), radius);
-		default:
-			throw new IllegalArgumentException("x or y argument only");
-		}
+	public Shape axialSymmetry(Line l) {
+		
 	}
 	
 	
