@@ -67,7 +67,11 @@ public class Ellipse extends Shape {
 
 	@Override
 	public Ellipse rotation(int angle) {
+		Point center = petitAxe.intersectionPoint(grandAxe);
+		Line newGrandAxe = grandAxe.rotation(angle);
+		Line newPetitAxe = petitAxe.rotation(angle);
 		
+		return new Ellipse(center,newGrandAxe,newPetitAxe);
 	}
 
 	@Override
