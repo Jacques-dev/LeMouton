@@ -37,22 +37,22 @@ public class Ellipse extends Shape {
     }
 
 	@Override
-	public Shape homothety(Point p, int ratio) {
-		double x = (center.getX()-p.getX())*ratio;
-		double y = (center.getY()-p.getY())*ratio;
+	public Ellipse homothety(Point p, int ratio) {
+		float x = (center.getX()-p.getX())*ratio;
+		float y = (center.getY()-p.getY())*ratio;
 		
-		double l1p1x = (petitAxe.getP1().getX()-p.getX())*ratio;
-		double l1p1y = (petitAxe.getP1().getY()-p.getY())*ratio;
-		double l1p2x = (petitAxe.getP2().getX()-p.getX())*ratio;
-		double l1p2y = (petitAxe.getP2().getY()-p.getY())*ratio;
+		float l1p1x = (petitAxe.getP1().getX()-p.getX())*ratio;
+		float l1p1y = (petitAxe.getP1().getY()-p.getY())*ratio;
+		float l1p2x = (petitAxe.getP2().getX()-p.getX())*ratio;
+		float l1p2y = (petitAxe.getP2().getY()-p.getY())*ratio;
 		Point l1p1 = new Point(l1p1x,l1p1y);
 		Point l1p2 = new Point(l1p2x,l1p2y);
 		Line l1 = new Line(l1p1,l1p2);
 		
-		double l2p1x = (petitAxe.getP1().getX()-p.getX())*ratio;
-		double l2p1y = (petitAxe.getP1().getY()-p.getY())*ratio;
-		double l2p2x = (petitAxe.getP2().getX()-p.getX())*ratio;
-		double l2p2y = (petitAxe.getP2().getY()-p.getY())*ratio;
+		float l2p1x = (petitAxe.getP1().getX()-p.getX())*ratio;
+		float l2p1y = (petitAxe.getP1().getY()-p.getY())*ratio;
+		float l2p2x = (petitAxe.getP2().getX()-p.getX())*ratio;
+		float l2p2y = (petitAxe.getP2().getY()-p.getY())*ratio;
 		Point l2p1 = new Point(l2p1x,l2p1y);
 		Point l2p2 = new Point(l2p2x,l2p2y);
 		Line l2 = new Line(l2p1,l2p2);
@@ -61,25 +61,33 @@ public class Ellipse extends Shape {
 	}
 
 	@Override
-	public Shape translation(Point p) {
+	public Ellipse translation(Point p) {
 		return new Ellipse(p, grandAxe.translation(p), petitAxe.translation(p));
 	}
 
 	@Override
-	public Shape rotation(int angle) {
+	public Ellipse rotation(int angle) {
 		
 	}
 
 	@Override
-	public Shape centralSymmetry() {
+	public Ellipse centralSymmetry() {
 		
 	}
 
 	@Override
-	public Shape axialSymmetry(Line l) {
+	public Ellipse axialSymmetry(Line l) {
+		Line newGrandAxe = grandAxe.axialSymmetry(l);
+		Line newPetitAxe = petitAxe.axialSymmetry(l);
 		
+		Point newCenter = newGrandAxe.intersectionPoint(newPetitAxe);
+		
+		return new Ellipse(newCenter,petitAxe,grandAxe);
 	}
 
+	public String toString() {
+		return center.toString() + "p:" + petitAxe.toString() + "g:" + grandAxe.toString();
+	}
     
 	@Override
 	public boolean equals(Object o) {
