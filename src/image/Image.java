@@ -15,15 +15,25 @@ public class Image implements Iterable<Shape> {
 	
 	private final Set<Shape> image;
 	
+	/**
+	
+	*/
 	public Image() {
 		image = new TreeSet<Shape>();
 	}
 	
+	/**
+	
+	@param 
+	*/
 	public void add(final Shape s) {
 		image.add(s);
-		
 	}
 	
+	/**
+	
+	@return 
+	*/
 	public double area() {
 		double area = 0;
 		for (Shape shape : this) {
@@ -32,6 +42,10 @@ public class Image implements Iterable<Shape> {
 		return area;
 	}
 
+	/**
+	
+	@return 
+	*/
 	public double perimeter() {
 		double perimeter = 0;
 		for (Shape shape : this) {
@@ -40,6 +54,10 @@ public class Image implements Iterable<Shape> {
 		return perimeter;
 	}
 	
+	/**
+	@param o : is an object with no type defined
+    @return a boolean which significate if this Arc is equal to another one
+	*/
 	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof Image)) {return false;}
@@ -47,16 +65,26 @@ public class Image implements Iterable<Shape> {
 		return image.equals(x.image);
 	}
 	
+	/**
+    @return a hash code value for the object
+	*/
 	@Override
 	public int hashCode() {
 		return Objects.hash(image);
 	}
-
+	
+	/**
+	An Iterator is an object that can be used to loop through collections
+	*/
 	@Override
 	public Iterator<Shape> iterator() {
 		return image.iterator();
 	}
 	
+	/**
+	 
+	@return 
+	*/
 	@Override
 	public String toString() {
 		// return ("Image \n ------\n" + image.toString() + "\n------");		
@@ -72,6 +100,9 @@ public class Image implements Iterable<Shape> {
 		return resultat.toString();
 	}
 	
+	/**
+	
+	*/
 	public void sortByPerimeter() {
 		List<Shape> test = new ArrayList<Shape>(image);
 		Collections.sort(test, new Comparator<Shape>() {
@@ -81,6 +112,9 @@ public class Image implements Iterable<Shape> {
 		});
 	}
 	
+	/**
+	 
+	*/
 	public void sortByArea() {
 		List<Shape> test = new ArrayList<Shape>(image);
 		Collections.sort(test, new Comparator<Shape>() {
@@ -90,6 +124,11 @@ public class Image implements Iterable<Shape> {
 		});
 	}
 	
+	/**
+	
+	@param 
+	@return 
+	*/
 	public int howManyInferiorShapePerimeter(double limite) {
 		int resultat = 0;
 		for (Shape shape : this) {

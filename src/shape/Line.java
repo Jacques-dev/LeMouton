@@ -10,24 +10,39 @@ public class Line extends Shape {
 	private final Point p2;
 	private final Function f;
 	
+	/**
+	
+	@param  
+	*/
 	public Line(Point p1, Point p2) {
 		this.p1 = p1;
 		this.p2 = p2;
 		this.f = new Function(p1,p2);
 	}
 	
+	/**
+	
+	@return 
+	*/
 	@Override
 	public double area() {
 		return 0;
 	}
 
+	/**
+	
+	@return 
+	*/
 	@Override
 	public double perimeter() {
 		return p1.distance(p2);
 	}
 
-
-
+	/**
+	
+	@param 
+	@return 
+	*/
 	@Override
 	public Line homothety(Point origine, int ratio) {
 		float x1 = origine.getX() + ratio * (p1.getX() - origine.getX());
@@ -38,15 +53,21 @@ public class Line extends Shape {
 		return new Line(new Point(x1,y1), new Point(x2,y2));
 	}
 	
+	/**
 	
-	
+	@param 
+	@return 
+	*/
 	@Override
 	public Line translation(Point p) {
 		return new Line(translate(p1,p), translate(p2,p));
 	}
 	
+	/**
 	
-
+	@param 
+	@return 
+	*/
 	@Override
 	public Line rotation(int angle) {
 		Point center = this.intersectionPoint(this);
@@ -56,15 +77,20 @@ public class Line extends Shape {
 		return new Line(newP1,newP2);
 	}
 	
+	/**
 	
-	
+	@return 
+	*/
 	@Override
 	public Line centralSymmetry() {
 		return new Line(symmetry(p2), symmetry(p1));
 	}
 	
+	/**
 	
-	
+	@param 
+	@return 
+	*/
 	@Override
 	public Line axialSymmetry(Line l) {
 		Point p1Onl = f.getNewPointOnTheLine(p1.getX(),l.getP1());
@@ -80,9 +106,12 @@ public class Line extends Shape {
 		
 		return new Line(newP1,newP2);
 	}
+
+	/**
 	
-	
-	
+	@param 
+	@return 
+	*/
 	public Point intersectionPoint(Line l2) {
 		
 		float a1 = f.getA();
@@ -98,11 +127,20 @@ public class Line extends Shape {
 		return new Point(x,y);
 	}
 	
+	/**
+	
+	@param 
+	@return 
+	*/
 	@Override
 	public String toString() {
 		return p1.toString() + p2.toString() + " " + f.toString();
 	}
 	
+	/**
+	@param o : is an object with no type defined
+    @return a boolean which significate if this Arc is equal to another one
+	*/
 	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof Line)) {return false;}
@@ -110,19 +148,34 @@ public class Line extends Shape {
 		return p1.equals(x.p1) && p2.equals(x.p2);
 	}
 	
+	/**
+    @return a hash code value for the object
+	*/
 	@Override
 	public int hashCode() {
 		return Objects.hash(p1,p2);
 	}
 
+	/**
+	
+	@return 
+	*/
 	public Point getP1() {
 		return p1;
 	}
 
+	/**
+	 
+	@return 
+	*/
 	public Point getP2() {
 		return p2;
 	}
 	
+	/**
+	 
+	@return 
+	*/
 	public Function getF() {
 		return f;
 	}

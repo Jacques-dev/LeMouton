@@ -9,12 +9,20 @@ public class Ellipse extends Shape {
 	private final Line grandAxe, petitAxe;
 	private final Point center;
 
+	/**
+	
+	@param 
+	*/
     public Ellipse(Point center, Line grandAxe, Line petitAxe) {
     	this.center = center;
     	this.grandAxe=grandAxe;
     	this.petitAxe=petitAxe;
     }
 
+	/**
+	
+	@return 
+	*/
     @Override
     public double perimeter() {
         float resultat = 0;
@@ -31,11 +39,20 @@ public class Ellipse extends Shape {
         return resultat;
     }
 
+	/**
+	
+	@return 
+	*/
     @Override
     public double area() {
         return Math.PI * petitAxe.perimeter() * grandAxe.perimeter();
     }
 
+	/**
+	
+	@param 
+	@return 
+	*/
 	@Override
 	public Ellipse homothety(Point p, int ratio) {
 		float x = (center.getX()-p.getX())*ratio;
@@ -60,11 +77,21 @@ public class Ellipse extends Shape {
 		return new Ellipse(new Point(x+center.getX(),y+center.getY()), l1, l2);
 	}
 
+	/**
+	
+	@param 
+	@return 
+	*/
 	@Override
 	public Ellipse translation(Point p) {
 		return new Ellipse(p, grandAxe.translation(p), petitAxe.translation(p));
 	}
 
+	/**
+	
+	@param 
+	@return 
+	*/
 	@Override
 	public Ellipse rotation(int angle) {
 		Point center = petitAxe.intersectionPoint(grandAxe);
@@ -74,6 +101,10 @@ public class Ellipse extends Shape {
 		return new Ellipse(center,newGrandAxe,newPetitAxe);
 	}
 
+	/**
+	
+	@return 
+	*/
 	@Override
 	public Ellipse centralSymmetry() {
 		Line newGrandAxe = grandAxe.centralSymmetry();
@@ -84,6 +115,11 @@ public class Ellipse extends Shape {
 		return new Ellipse(newCenter,petitAxe,grandAxe);
 	}
 
+	/**
+	
+	@param 
+	@return 
+	*/
 	@Override
 	public Ellipse axialSymmetry(Line l) {
 		Line newGrandAxe = grandAxe.axialSymmetry(l);
@@ -94,10 +130,18 @@ public class Ellipse extends Shape {
 		return new Ellipse(newCenter,petitAxe,grandAxe);
 	}
 
+	/**
+	
+	@return 
+	*/
 	public String toString() {
 		return center.toString() + "p:" + petitAxe.toString() + "g:" + grandAxe.toString();
 	}
     
+	/**
+	@param o : is an object with no type defined
+    @return a boolean which significate if this Arc is equal to another one
+	*/
 	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof Ellipse)) {return false;}
@@ -105,6 +149,9 @@ public class Ellipse extends Shape {
 		return center == x.center && grandAxe == x.grandAxe && petitAxe == x.petitAxe;
 	}
 	
+	/**
+    @return a hash code value for the object
+	*/
 	@Override
 	public int hashCode() {
 		return Objects.hash(center,grandAxe,petitAxe);
