@@ -72,7 +72,12 @@ public class Ellipse extends Shape {
 
 	@Override
 	public Ellipse centralSymmetry() {
+		Line newGrandAxe = grandAxe.centralSymmetry();
+		Line newPetitAxe = petitAxe.centralSymmetry();
 		
+		Point newCenter = newGrandAxe.intersectionPoint(newPetitAxe);
+		
+		return new Ellipse(newCenter,petitAxe,grandAxe);
 	}
 
 	@Override
