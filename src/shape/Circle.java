@@ -11,8 +11,8 @@ public class Circle extends Shape {
 	private final double pi = Math.PI;
 	
 	/**
-	
-	@param 
+	@param center is the center Point of the Circle
+	@param radius is the distance between the center and the limit of the Circle
 	*/
 	public Circle(Point center, double radius) {
 		this.center = center;
@@ -20,8 +20,7 @@ public class Circle extends Shape {
 	}
 
 	/**
-	
-	@return 
+	@return the area of the Circle
 	*/
 	@Override
 	public double area() {
@@ -29,8 +28,7 @@ public class Circle extends Shape {
 	}
 
 	/**
-	
-	@return 
+	@return the perimeter of the Circle
 	*/
 	@Override
 	public double perimeter() {
@@ -38,9 +36,9 @@ public class Circle extends Shape {
 	}
 
 	/**
-	
-	@param 
-	@return 
+	@param origine is the homothety origin
+	@param ratio is the homothety ratio
+	@return a new Circle after a homothety
 	*/
 	@Override
 	public Circle homothety(Point p, int ratio) {
@@ -50,9 +48,8 @@ public class Circle extends Shape {
 	}
 
 	/**
-	
-	@param 
-	@return 
+	@param p is the new center Point of the Circle after translation
+	@return a new Circle after a translation
 	*/
 	@Override
 	public Circle translation(Point p) {
@@ -60,9 +57,8 @@ public class Circle extends Shape {
 	}
 
 	/**
-	
-	@param 
-	@return 
+	@param angle is the degree of rotation
+	@return a new Circle after a rotation
 	*/
 	@Override
 	public Circle rotation(int angle) {
@@ -70,8 +66,7 @@ public class Circle extends Shape {
 	}
 
 	/**
-	
-	@return 
+	@return a new Circle corresponding the its central symmetry
 	*/
 	@Override
 	public Circle centralSymmetry() {
@@ -79,19 +74,25 @@ public class Circle extends Shape {
 	}
 
 	/**
-	
-	@param 
-	@return 
+	@param l is the Line of symmetry
+	@return a new Circle corresponding the its axial symmetry
 	*/
 	@Override
 	public Circle axialSymmetry(Line l) {
-		Point pOnl = l.getF().getNewPointOnTheLine(center.getX(),l.getP1());
+		Point pOnl = l.getF().getNewPointOnTheLine(center.getX(), center.getY(), l.getP1());
 		float pX_Distance = center.distanceX(pOnl);
 		float pY_Distance = center.distanceY(pOnl);
 		
 		Point newCenter = new Point(pOnl.getX()-pY_Distance, pOnl.getY()-pX_Distance);
 		
 		return new Circle (newCenter, radius);
+	}
+	
+	/**
+	@return a textual representation of a Circle
+	*/
+	public String toString() {
+		return "center: " + center + " " + "radius: " + radius;
 	}
 	
 	/**

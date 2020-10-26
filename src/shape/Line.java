@@ -2,27 +2,26 @@ package shape;
 
 import java.util.Objects;
 
-import function.Function;
+import function.LinearFunction;
 import point.Point;
 
 public class Line extends Shape {
 	private final Point p1;
 	private final Point p2;
-	private final Function f;
+	private final LinearFunction f;
 	
 	/**
-	
-	@param  
+	@param p1 is one of the point belonging to the line
+	@param p2 is one of the point belonging to the line
 	*/
 	public Line(Point p1, Point p2) {
 		this.p1 = p1;
 		this.p2 = p2;
-		this.f = new Function(p1,p2);
+		this.f = new LinearFunction(p1,p2);
 	}
 	
 	/**
-	
-	@return 
+	@return the area of the line
 	*/
 	@Override
 	public double area() {
@@ -30,8 +29,7 @@ public class Line extends Shape {
 	}
 
 	/**
-	
-	@return 
+	@return the perimeter of the line
 	*/
 	@Override
 	public double perimeter() {
@@ -39,9 +37,9 @@ public class Line extends Shape {
 	}
 
 	/**
-	
-	@param 
-	@return 
+	@param origine is the homothety origin
+	@param ratio is the homothety ratio
+	@return a new Line after a homothety
 	*/
 	@Override
 	public Line homothety(Point origine, int ratio) {
@@ -54,19 +52,25 @@ public class Line extends Shape {
 	}
 	
 	/**
-	
-	@param 
-	@return 
+	@param p is the new center Point of the Line after translation
+	@return a new Line after a translation
 	*/
 	@Override
 	public Line translation(Point p) {
-		return new Line(translate(p1,p), translate(p2,p));
+		Point center = centerOfLine();
+		
+		float center_x = center.distanceX(p1);
+		float center_y = center.distanceY(p1);
+		
+		Point newP1 = new Point(p.getX()-center_x, p.getY()-center_y);
+		Point newP2 = new Point(p.getX()+center_x, p.getY()+center_y);
+		
+		return new Line(newP1, newP2);
 	}
 	
 	/**
-	
-	@param 
-	@return 
+	@param angle is the degree of rotation
+	@return a new Line after a rotation
 	*/
 	@Override
 	public Line rotation(int angle) {
@@ -78,8 +82,7 @@ public class Line extends Shape {
 	}
 	
 	/**
-	
-	@return 
+	@return a new Line corresponding the its central symmetry
 	*/
 	@Override
 	public Line centralSymmetry() {
@@ -87,50 +90,58 @@ public class Line extends Shape {
 	}
 	
 	/**
-	
-	@param 
-	@return 
+	@param l is the Line of symmetry
+	@return a new Line corresponding the its axial symmetry
 	*/
 	@Override
 	public Line axialSymmetry(Line l) {
-		Point p1Onl = f.getNewPointOnTheLine(p1.getX(),l.getP1());
-		Point p2Onl = f.getNewPointOnTheLine(p2.getX(),l.getP2());
+		Point p1Onl = f.getNewPointOnTheLine(p1.getX(), p1.getY(), l.getP1());
+		Point p2Onl = f.getNewPointOnTheLine(p2.getX(), p2.getY(), l.getP2());
 		
 		float p1X_Distance = p1.distanceX(p1Onl);
 		float p1Y_Distance = p1.distanceY(p1Onl);
 		float p2X_Distance = p2.distanceX(p2Onl);
 		float p2Y_Distance = p2.distanceY(p2Onl);
 		
-		Point newP1 = new Point(p1Onl.getX()-p1Y_Distance, p1Onl.getY()-p1X_Distance);
-		Point newP2 = new Point(p2Onl.getX()-p2Y_Distance, p2Onl.getY()-p2X_Distance);
+		Point newP1 = new Point(p1Onl.getX()+p1Y_Distance, p1Onl.getY()+p1X_Distance);
+		Point newP2 = new Point(p2Onl.getX()+p2Y_Distance, p2Onl.getY()+p2X_Distance);
 		
 		return new Line(newP1,newP2);
 	}
 
 	/**
-	
-	@param 
-	@return 
+	@param l2 is the second line to calculate the intersection point
+	@return a Point which is the intersection point of two lines
 	*/
 	public Point intersectionPoint(Line l2) {
 		
 		float a1 = f.getA();
 		float b1 = f.getB();
 		
-		Function f2 = l2.getF();
+		LinearFunction f2 = l2.getF();
 		float a2 = f2.getA();
 		float b2 = f2.getB();
 		
-		float x = (b2 - b1) / (a1-a2);
+		float x;
+		if ((a1-a2) == 0) x = 0;
+		else x = (b2 - b1) / (a1-a2);
+		
 		float y = a1 * x + b1;
 		
 		return new Point(x,y);
 	}
 	
-	/**
+	public Point centerOfLine() {
+		float x, y;
+		
+		x = (p1.getX() + p2.getX()) / 2;
+		y = (p1.getY() + p2.getY()) / 2;
+		
+		return new Point(x,y);
+	}
 	
-	@param 
-	@return 
+	/**
+	@return a textual representation of a Line
 	*/
 	@Override
 	public String toString() {
@@ -157,26 +168,23 @@ public class Line extends Shape {
 	}
 
 	/**
-	
-	@return 
+	@return one of the two Points belonging to the Line
 	*/
 	public Point getP1() {
 		return p1;
 	}
 
 	/**
-	 
-	@return 
+	@return one of the two Points belonging to the Line
 	*/
 	public Point getP2() {
 		return p2;
 	}
 	
 	/**
-	 
-	@return 
+	@return the linear function of the Line
 	*/
-	public Function getF() {
+	public LinearFunction getF() {
 		return f;
 	}
 }

@@ -1,15 +1,15 @@
 package function;
 import point.Point;
 
-public class Function { // y = ax + b
+public class LinearFunction { // y = ax + b
 	private final float a;
 	private final float b;
 	
 	/**
-	
-	@param  
+	@param p1 is a Points which will define the linear function of a Line
+	@param p2 is a Points which will define the linear function of a Line
 	*/
-	public Function(Point p1, Point p2) {
+	public LinearFunction(Point p1, Point p2) {
 		if ((p2.getY() - p1.getY()) == 0) {
 			this.a = ((p2.getY() - p1.getY()) / (p2.getX() - p1.getX()));
 			this.b = (p1.getY() - (a * p1.getX()));
@@ -20,28 +20,19 @@ public class Function { // y = ax + b
 	}
 	
 	/**
-	
-	@param 
-	@return 
+	@param x is the x-coordinate of the searched point on a line
+	@param y is the x-coordinate of the searched point on a line if the line is like x = c
+	@param p is one of the Point belonging to the line
+	@return a Point which is the Point on the symmetrical line
 	*/
-	public boolean isOnLine(Point p) { // yp == a * xp + b
-		if (p.getY() == (a * p.getX()) + b) return true;
-		return false;
-	}
-	
-	/**
-	
-	@param 
-	@return 
-	*/
-	public Point getNewPointOnTheLine(float x, Point p) { // newX = (yp-b)/a
+	public Point getNewPointOnTheLine(float x, float y, Point p) { // newX = (yp-b)/a
+		if (p.getY() == 0) return new Point(p.getX(),y); // x = c
 		if (a != 0) return new Point(((p.getY() - b) / a), p.getY());
-		return new Point(x, p.getY());
+		return new Point(x, p.getY()); // y = z
 	}
 	
 	/**
-	
-	@return 
+	@return the steering coefficient of the function
 	*/
 	public float getA() {
 		return a;
@@ -49,15 +40,14 @@ public class Function { // y = ax + b
 	
 	/**
 	
-	@return 
+	@return the original y-intercept
 	*/
 	public float getB() {
 		return b;
 	}
 	
 	/**
-	 
-	@return 
+	@return a textual representation of a linear function
 	*/
 	public String toString() {
 		if (a != 0) {

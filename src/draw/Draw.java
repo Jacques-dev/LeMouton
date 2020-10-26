@@ -12,21 +12,21 @@ public class Draw implements Iterable<Image> {
 	private final Set<Image> draw;
 	
 	/**
-	This class contains images
+	A Draw is a set of Images
 	*/
 	public Draw() {
 		draw = new TreeSet<Image>();
 	}
 	
 	/**
-	@param Image is an image containing shapes
+	@param i is an Image containing Shapes
 	*/
 	public void add(final Image i) {
 		draw.add(i);	
 	}
 	
 	/**
-	@return the sum of all the images area contained
+	@return the sum of all the Images area contained
 	*/
 	public double area() {
 		double area = 0;
@@ -37,7 +37,7 @@ public class Draw implements Iterable<Image> {
 	}
 
 	/**
-	@return the sum of all the images perimeters contained 
+	@return the sum of all the Images perimeters contained 
 	*/
 	public double perimeter() {
 		double perimeter = 0;
@@ -48,7 +48,7 @@ public class Draw implements Iterable<Image> {
 	}
 	
 	/**
-	@param o : is an object with no type defined
+	@param o is an object with no type defined
     @return a boolean which significate if this Arc is equal to another one
 	*/
 	@Override
@@ -75,7 +75,7 @@ public class Draw implements Iterable<Image> {
 	}
 	
 	/**
-	@return a string of all the images contained
+	@return a textual representation of all the Images contained
 	*/
 	@Override
 	public String toString() {	
@@ -93,7 +93,7 @@ public class Draw implements Iterable<Image> {
 	
 	/**
 	@param limite define a certain area
-	@return the number of images contained which have an area less than the limit given in parameter
+	@return the number of Images contained which have an area less than the limit given in parameter
 	*/
 	public int howManyInferiorImageArea(double limite) {
 		int resultat = 0;

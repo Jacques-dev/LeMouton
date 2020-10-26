@@ -12,8 +12,7 @@ public class Polygones extends Shape {
 	private Point center;
 	
 	/**
-	
-	@param 
+	@param lines is a list of the lines belonging to the Polygon
 	*/
 	public Polygones(ArrayList<Line> lines) {
 		this.lines = lines;
@@ -28,8 +27,7 @@ public class Polygones extends Shape {
 	}
 	
 	/**
-	 
-	@return 
+	@return the area of the Polygon
 	*/
 	@Override
 	public double area() {
@@ -38,8 +36,7 @@ public class Polygones extends Shape {
 	}
 
 	/**
-	
-	@return 
+	@return the perimeter of the Polygon
 	*/
 	@Override
 	public double perimeter() {
@@ -51,9 +48,9 @@ public class Polygones extends Shape {
 	}
 	
 	/**
-	
-	@param 
-	@return 
+	@param origine is the homothety origin
+	@param ratio is the homothety ratio
+	@return a new Polygon after a homothety
 	*/
 	@Override
 	public Polygones homothety(Point p, int ratio) {
@@ -65,9 +62,8 @@ public class Polygones extends Shape {
 	}
 
 	/**
-	
-	@param 
-	@return 
+	@param p is the new center Point of the Polygon after translation
+	@return a new Polygon after a translation
 	*/
 	@Override
 	public Polygones translation(Point p) {
@@ -79,9 +75,8 @@ public class Polygones extends Shape {
 	}
 
 	/**
-	
-	@param 
-	@return 
+	@param angle is the degree of rotation
+	@return a new Polygon after a rotation
 	*/
 	@Override
 	public Polygones rotation(int angle) {
@@ -93,8 +88,7 @@ public class Polygones extends Shape {
 	}
 
 	/**
-	
-	@return 
+	@return a new Polygon corresponding the its central symmetry
 	*/
 	@Override
 	public Polygones centralSymmetry() {
@@ -106,9 +100,8 @@ public class Polygones extends Shape {
 	}
 
 	/**
-	
-	@param 
-	@return 
+	@param l is the Line of symmetry
+	@return a new Polygon corresponding the its axial symmetry
 	*/
 	@Override
 	public Polygones axialSymmetry(Line l) {
@@ -120,8 +113,15 @@ public class Polygones extends Shape {
 	}
 	
 	/**
+	@return a textual representation of a Polygon
+	*/
+	public String toString() {
+		return "";
+	}
+	
+	/**
 	@param o : is an object with no type defined
-    @return a boolean which significate if this Arc is equal to another one
+    @return a boolean which show if this Arc is equal to another one
 	*/
 	@Override
 	public boolean equals(Object o) {

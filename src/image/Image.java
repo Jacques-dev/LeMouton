@@ -16,23 +16,21 @@ public class Image implements Iterable<Shape> {
 	private final Set<Shape> image;
 	
 	/**
-	
+	An Image is a set of Shapes
 	*/
 	public Image() {
 		image = new TreeSet<Shape>();
 	}
 	
 	/**
-	
-	@param 
+	@param s is a Shape
 	*/
 	public void add(final Shape s) {
 		image.add(s);
 	}
 	
 	/**
-	
-	@return 
+	@return the sum of all the Shapes area contained
 	*/
 	public double area() {
 		double area = 0;
@@ -43,8 +41,7 @@ public class Image implements Iterable<Shape> {
 	}
 
 	/**
-	
-	@return 
+	@return the sum of all the Shapes perimeters contained 
 	*/
 	public double perimeter() {
 		double perimeter = 0;
@@ -82,8 +79,7 @@ public class Image implements Iterable<Shape> {
 	}
 	
 	/**
-	 
-	@return 
+	@return a textual representation of an Image
 	*/
 	@Override
 	public String toString() {
@@ -101,7 +97,7 @@ public class Image implements Iterable<Shape> {
 	}
 	
 	/**
-	
+	This method able to sort all the Shapes already stocked in set by their perimeter
 	*/
 	public void sortByPerimeter() {
 		List<Shape> test = new ArrayList<Shape>(image);
@@ -113,7 +109,7 @@ public class Image implements Iterable<Shape> {
 	}
 	
 	/**
-	 
+	This method able to sort all the Shapes already stocked in set by their area
 	*/
 	public void sortByArea() {
 		List<Shape> test = new ArrayList<Shape>(image);
@@ -125,9 +121,8 @@ public class Image implements Iterable<Shape> {
 	}
 	
 	/**
-	
-	@param 
-	@return 
+	@param limite define a certain perimeter
+	@return the number of Shapes contained which have a perimeter less than the limit given in parameter
 	*/
 	public int howManyInferiorShapePerimeter(double limite) {
 		int resultat = 0;

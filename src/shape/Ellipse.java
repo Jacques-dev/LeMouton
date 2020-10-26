@@ -10,8 +10,9 @@ public class Ellipse extends Shape {
 	private final Point center;
 
 	/**
-	
-	@param 
+	@param center is the center Point of the Ellipse
+	@param grandAxe is the longest line belonging in the Ellipse
+	@param grandAxe is the smallest line belonging in the Ellipse
 	*/
     public Ellipse(Point center, Line grandAxe, Line petitAxe) {
     	this.center = center;
@@ -19,9 +20,8 @@ public class Ellipse extends Shape {
     	this.petitAxe=petitAxe;
     }
 
-	/**
-	
-	@return 
+    /**
+	@return the perimeter of the Ellipse
 	*/
     @Override
     public double perimeter() {
@@ -39,19 +39,18 @@ public class Ellipse extends Shape {
         return resultat;
     }
 
-	/**
-	
-	@return 
+    /**
+	@return the area of the Ellipse
 	*/
     @Override
     public double area() {
         return Math.PI * petitAxe.perimeter() * grandAxe.perimeter();
     }
 
-	/**
-	
-	@param 
-	@return 
+    /**
+	@param origine is the homothety origin
+	@param ratio is the homothety ratio
+	@return a new Ellipse after a homothety
 	*/
 	@Override
 	public Ellipse homothety(Point p, int ratio) {
@@ -78,9 +77,8 @@ public class Ellipse extends Shape {
 	}
 
 	/**
-	
-	@param 
-	@return 
+	@param p is the new center Point of the Ellipse after translation
+	@return a new Ellipse after a translation
 	*/
 	@Override
 	public Ellipse translation(Point p) {
@@ -88,9 +86,8 @@ public class Ellipse extends Shape {
 	}
 
 	/**
-	
-	@param 
-	@return 
+	@param angle is the degree of rotation
+	@return a new Ellipse after a rotation
 	*/
 	@Override
 	public Ellipse rotation(int angle) {
@@ -102,8 +99,7 @@ public class Ellipse extends Shape {
 	}
 
 	/**
-	
-	@return 
+	@return a new Ellipse corresponding the its central symmetry
 	*/
 	@Override
 	public Ellipse centralSymmetry() {
@@ -116,9 +112,8 @@ public class Ellipse extends Shape {
 	}
 
 	/**
-	
-	@param 
-	@return 
+	@param l is the Line of symmetry
+	@return a new Ellipse corresponding the its axial symmetry
 	*/
 	@Override
 	public Ellipse axialSymmetry(Line l) {
@@ -131,8 +126,7 @@ public class Ellipse extends Shape {
 	}
 
 	/**
-	
-	@return 
+	@return a textual representation of an Ellipse
 	*/
 	public String toString() {
 		return center.toString() + "p:" + petitAxe.toString() + "g:" + grandAxe.toString();
