@@ -2,15 +2,18 @@ package shape;
 
 import java.util.Objects;
 
+import function.Function;
 import point.Point;
 
 public class Line extends Shape {
 	private final Point p1;
 	private final Point p2;
+	private final Function f;
 	
 	public Line(Point p1, Point p2) {
 		this.p1 = p1;
 		this.p2 = p2;
+		this.f = new Function(p1,p2);
 	}
 	
 	@Override
@@ -27,11 +30,11 @@ public class Line extends Shape {
 
 	@Override
 	public Line homothety(Point origine, int ratio) {
-		double x1 = origine.getX() + ratio * (p1.getX() - origine.getX());
-		double y1 = origine.getY() + ratio * (p1.getY() - origine.getY());
+		int x1 = origine.getX() + ratio * (p1.getX() - origine.getX());
+		int y1 = origine.getY() + ratio * (p1.getY() - origine.getY());
 		
-		double x2 = origine.getX() + ratio * (p2.getX() - origine.getX());
-		double y2 = origine.getY() + ratio * (p2.getY() - origine.getY());
+		int x2 = origine.getX() + ratio * (p2.getX() - origine.getX());
+		int y2 = origine.getY() + ratio * (p2.getY() - origine.getY());
 		return new Line(new Point(x1,y1), new Point(x2,y2));
 	}
 
@@ -45,27 +48,18 @@ public class Line extends Shape {
 
 
 	@Override
-	public Shape rotation(int angle) {
-		double xCentre = (p1.getX()+p2.getX())/2;
-		double yCentre = (p1.getY()+p2.getY())/2;
+	public Line rotation(int angle) {
 		
-		double p1x = xCentre + (p1.getY() - yCentre);
-		double p1y = yCentre + (p1.getX() - xCentre);
-		
-		double p2x = xCentre + (p2.getY() - yCentre);
-		double p2y = yCentre + (p2.getX() - xCentre);
-		
-		return new Line(new Point(p1x, p1y), new Point(p2x, p2y));
 	}
 
 	
 	
 	public Line rotationFromPoint(Point p) {	
-		double p1x = p.getX() + (p1.getY() - p.getY());
-		double p1y = p.getY() + (p1.getX() - p.getX());
+		int p1x = p.getX() + (p1.getY() - p.getY());
+		int p1y = p.getY() + (p1.getX() - p.getX());
 		
-		double p2x = p.getX() + (p2.getY() - p.getY());
-		double p2y = p.getY() + (p2.getX() - p.getX());
+		int p2x = p.getX() + (p2.getY() - p.getY());
+		int p2y = p.getY() + (p2.getX() - p.getX());
 		
 		return new Line(new Point(p1x, p1y), new Point(p2x, p2y));
 	}
@@ -73,49 +67,41 @@ public class Line extends Shape {
 
 	
 	@Override
-	public Shape centralSymmetry() {
+	public Line centralSymmetry() {
 		return new Line(symmetry(p2), symmetry(p1));
 	}
 	
 	
 
 	public Line centralSymmetryFromPoint(Point p) {
-		double p1x = p.getX() + (p.getX() - this.p1.getX());
-		double p1y = p.getY() + (p.getY() - this.p1.getY());
-		double p2x = p.getX() + (p.getX() - this.p2.getX());
-		double p2y = p.getY() + (p.getY() - this.p2.getY());
+		int p1x = p.getX() + (p.getX() - this.p1.getX());
+		int p1y = p.getY() + (p.getY() - this.p1.getY());
+		int p2x = p.getX() + (p.getX() - this.p2.getX());
+		int p2y = p.getY() + (p.getY() - this.p2.getY());
 		return new Line(new Point(p1x, p1y), new Point(p2x, p2y));
 	}
 
 	
 	
 	@Override
-	public Shape axialSymmetry(Line l) {
+	public Line axialSymmetry(Line l) {
+		Point p1Onl = f.getNewPoint(p1.getX(),l.getP1());
+		Point p2Onl = f.getNewPoint(p2.getX(),l.getP2());
 		
-	}
-	
-	
-	
-	public Line axialSymmetryFromPoint(Point p, String axe) {
-		double p1modified;
-		double p2modified;
-		switch (axe) {
-		case "x":
-			p1modified = p.getY() + (p.getY() - this.p1.getY());
-			p2modified = p.getY() + (p.getY() - this.p2.getY());
-			return new Line(new Point(this.p1.getX(), p1modified), new Point(this.p2.getX(), p2modified));
-		case "y":
-			p1modified = p.getX() + (p.getX() - this.p1.getX());
-			p2modified = p.getX() + (p.getX() - this.p2.getX());
-			return new Line(new Point(p1modified, this.p1.getY()), new Point(p2modified, this.p2.getY()));
-		default:
-			throw new IllegalArgumentException("x or y argument only");
-		}
+		int p1X_Distance = p1.distanceX(p1Onl);
+		int p1Y_Distance = p1.distanceY(p1Onl);
+		int p2X_Distance = p2.distanceX(p2Onl);
+		int p2Y_Distance = p2.distanceY(p2Onl);
+		
+		Point newP1 = new Point(p1Onl.getX()-p1Y_Distance, p1Onl.getY()-p1X_Distance);
+		Point newP2 = new Point(p2Onl.getX()-p2Y_Distance, p2Onl.getY()-p2X_Distance);
+		
+		return new Line(newP1,newP2);
 	}
 	
 	@Override
 	public String toString() {
-		return p1.toString() + p2.toString();
+		return p1.toString() + p2.toString() + " " + f.toString();
 	}
 	
 	@Override

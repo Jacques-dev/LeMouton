@@ -20,4 +20,5 @@ public abstract class Shape implements ShapesMethodes {
 		return (int) (this.area() - shape.area());
 	}
 	
+	
 }

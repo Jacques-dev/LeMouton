@@ -3,10 +3,10 @@ package point;
 import java.util.Objects;
 
 public class Point {
-	private final double x;
-	private final double y;
+	private final int x;
+	private final int y;
 	
-	public Point(double x2, double y2) {
+	public Point(int x2, int y2) {
 		this.x = x2;
 		this.y = y2;
 	}
@@ -19,16 +19,24 @@ public class Point {
 		this(p.getX(), p.getY());
 	}
 	
-	public double getX() {
+	public int getX() {
 		return x;
 	}
 	
-	public double getY() {
+	public int getY() {
 		return y;
 	}
 	
-	public double distance(Point p2) {
-		return Math.sqrt((p2.getX()-x)*(p2.getX()-x) + (p2.getY()-y)*(p2.getY()-y));
+	public int distance(Point p2) {
+		return (int) Math.sqrt((p2.getX()-x)*(p2.getX()-x) + (p2.getY()-y)*(p2.getY()-y));
+	}
+	
+	public int distanceX(Point p2) {
+		return p2.getX()-x;
+	}
+	
+	public int distanceY(Point p2) {
+		return p2.getY()-y;
 	}
 	
 	public Point translation(int x, int y) {
