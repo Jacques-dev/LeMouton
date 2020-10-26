@@ -49,7 +49,11 @@ public class Line extends Shape {
 
 	@Override
 	public Line rotation(int angle) {
+		Point center = this.intersectionPoint(this);
+		Point newP1 = this.rotate(p1, center, angle);
+		Point newP2 = this.rotate(p2, center, angle);
 		
+		return new Line(newP1,newP2);
 	}
 	
 	

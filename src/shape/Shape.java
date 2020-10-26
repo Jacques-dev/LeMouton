@@ -20,5 +20,13 @@ public abstract class Shape implements ShapesMethodes {
 		return (int) (this.area() - shape.area());
 	}
 	
-	
+	public Point rotate(Point m, Point o, int angle) {
+		float xM, yM, x, y;
+		angle *= Math.PI / 180;
+	    xM = m.getX() - o.getX();
+	    yM = m.getY() - o.getY();
+	    x = (float) (xM * Math.cos(angle) + yM * Math.sin (angle) + o.getX());
+	    y = (float) (- xM * Math.sin (angle) + yM * Math.cos (angle) + o.getY());
+	    return new Point(x, y);
+	}
 }
