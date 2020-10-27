@@ -69,8 +69,8 @@ public class Circle extends Shape {
 	@return a new Circle corresponding the its central symmetry
 	*/
 	@Override
-	public Circle centralSymmetry() {
-		return new Circle(symmetry(center), radius);
+	public Circle centralSymmetry(Point p) {
+		return new Circle(symmetry(center,  p), radius);
 	}
 
 	/**

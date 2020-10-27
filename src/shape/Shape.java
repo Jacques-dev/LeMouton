@@ -5,11 +5,12 @@ import point.Point;
 public abstract class Shape implements ShapesMethodes {
 	
 	/**
-	@param p is the Point of symetry
+	@param p is the original Point
+	@param center is the Point of symetry
 	@return a new Point after symmetry
 	*/
-	public Point symmetry(Point p) {
-		return new Point(-p.getX(),-p.getY());
+	public Point symmetry(Point p, Point center) {
+		return new Point(-(p.getX() - center.getX()) + center.getX(),-(p.getY() - center.getY()) + center.getY());
 	}
 
 	/**

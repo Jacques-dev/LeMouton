@@ -102,9 +102,9 @@ public class Ellipse extends Shape {
 	@return a new Ellipse corresponding the its central symmetry
 	*/
 	@Override
-	public Ellipse centralSymmetry() {
-		Line newGrandAxe = grandAxe.centralSymmetry();
-		Line newPetitAxe = petitAxe.centralSymmetry();
+	public Ellipse centralSymmetry(Point p) {
+		Line newGrandAxe = grandAxe.centralSymmetry(p);
+		Line newPetitAxe = petitAxe.centralSymmetry(p);
 		
 		Point newCenter = newGrandAxe.intersectionPoint(newPetitAxe);
 		

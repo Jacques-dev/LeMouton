@@ -85,8 +85,8 @@ public class Line extends Shape {
 	@return a new Line corresponding the its central symmetry
 	*/
 	@Override
-	public Line centralSymmetry() {
-		return new Line(symmetry(p2), symmetry(p1));
+	public Line centralSymmetry(Point p) {
+		return new Line(symmetry(p1, p), symmetry(p2, p));
 	}
 	
 	/**

@@ -82,7 +82,7 @@ public class Polygones extends Shape {
 	public Polygones rotation(int angle) {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
-			tmpLines.add(this.lines.get(i).rotationFromPoint(this.center));
+			tmpLines.add(this.lines.get(i).rotation(angle));
 		}
 		return new Polygones(tmpLines);
 	}
@@ -91,10 +91,10 @@ public class Polygones extends Shape {
 	@return a new Polygon corresponding the its central symmetry
 	*/
 	@Override
-	public Polygones centralSymmetry() {
+	public Polygones centralSymmetry(Point p) {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
-			tmpLines.add(this.lines.get(i).centralSymmetryFromPoint(this.center));
+			tmpLines.add(this.lines.get(i).centralSymmetry(p));
 		}
 		return new Polygones(tmpLines);
 	}
@@ -107,7 +107,7 @@ public class Polygones extends Shape {
 	public Polygones axialSymmetry(Line l) {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
-			tmpLines.add(this.lines.get(i).axialSymmetryFromPoint(this.center, axe));
+			tmpLines.add(this.lines.get(i).axialSymmetry(l));
 		}
 		return new Polygones(tmpLines);
 	}
