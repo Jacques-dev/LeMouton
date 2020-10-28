@@ -2,6 +2,7 @@ package shape;
 
 import java.util.Objects;
 
+import exceptions.GeometricalException;
 import point.Point;
 
 public class Ellipse extends Shape {
@@ -11,13 +12,46 @@ public class Ellipse extends Shape {
 
 	/**
 	@param center is the center Point of the Ellipse
-	@param grandAxe is the longest line belonging in the Ellipse
-	@param grandAxe is the smallest line belonging in the Ellipse
+	@param grandAxe is the longest line belonging in the Ellipse from center
+	@param petitAxe is the smallest line belonging in the Ellipse from center
+	@throws GeometricalException 
 	*/
-    public Ellipse(Point center, Line grandAxe, Line petitAxe) {
-    	this.center = center;
-    	this.grandAxe=grandAxe;
-    	this.petitAxe=petitAxe;
+    public Ellipse(Point center, Line grandAxe, Line petitAxe) throws GeometricalException {
+    	if (center.equals(grandAxe.intersectionPoint(petitAxe))) {
+	    	this.center = center;
+	    	
+	    	Point newPoint;
+	    	
+	    	if (grandAxe.getP1().equals(center)) {
+	    		newPoint = symmetry(grandAxe.getP1(), center);
+	    		this.grandAxe = new Line(grandAxe.getP2(), newPoint);
+	    	} else {
+	    		newPoint = symmetry(grandAxe.getP1(), center);
+	    		this.grandAxe = new Line(grandAxe.getP1(), newPoint);
+	    	}
+	    	
+	    	if (petitAxe.getP1().equals(center)) {
+	    		newPoint = symmetry(petitAxe.getP1(), center);
+	    		this.petitAxe = new Line(petitAxe.getP2(), newPoint);
+	    	} else {
+	    		newPoint = symmetry(petitAxe.getP1(), center);
+	    		this.petitAxe = new Line(petitAxe.getP1(), newPoint);
+	    	}
+    	} else {
+    		throw new GeometricalException("[grandAxe] and [petitAxe] have to contains the same point as [center]");
+    	}
+    }
+    
+    /**
+	@param center is the center Point of the Ellipse
+	@param grandAxe is the longest line belonging in the Ellipse
+	@param petitAxe is the smallest line belonging in the Ellipse
+	@throws GeometricalException 
+	*/
+    public Ellipse newEllipse(Point center, Line grandAxe, Line petitAxe) throws GeometricalException {
+    	Line newGrandAxe = new Line(grandAxe.getP1(), grandAxe.centerOfLine());
+    	Line newPetitAxe = new Line(petitAxe.getP1(), petitAxe.centerOfLine());
+    	return new Ellipse(center, newGrandAxe, newPetitAxe);
     }
 
     /**
@@ -44,16 +78,17 @@ public class Ellipse extends Shape {
 	*/
     @Override
     public double area() {
-        return Math.PI * petitAxe.perimeter() * grandAxe.perimeter();
+        return Math.PI * (petitAxe.perimeter()/2) * (grandAxe.perimeter()/2);
     }
 
     /**
 	@param origine is the homothety origin
 	@param ratio is the homothety ratio
 	@return a new Ellipse after a homothety
+    @throws GeometricalException 
 	*/
 	@Override
-	public Ellipse homothety(Point p, int ratio) {
+	public Ellipse homothety(Point p, int ratio) throws GeometricalException {
 		float x = (center.getX()-p.getX())*ratio;
 		float y = (center.getY()-p.getY())*ratio;
 		
@@ -73,56 +108,60 @@ public class Ellipse extends Shape {
 		Point l2p2 = new Point(l2p2x,l2p2y);
 		Line l2 = new Line(l2p1,l2p2);
 		
-		return new Ellipse(new Point(x+center.getX(),y+center.getY()), l1, l2);
+		return newEllipse(new Point(x+center.getX(),y+center.getY()), l1, l2);
 	}
 
 	/**
 	@param p is the new center Point of the Ellipse after translation
 	@return a new Ellipse after a translation
+	@throws GeometricalException 
 	*/
 	@Override
-	public Ellipse translation(Point p) {
-		return new Ellipse(p, grandAxe.translation(p), petitAxe.translation(p));
+	public Ellipse translation(Point p) throws GeometricalException {
+		return newEllipse(p, grandAxe.translation(p), petitAxe.translation(p));
 	}
 
 	/**
 	@param angle is the degree of rotation
 	@return a new Ellipse after a rotation
+	@throws GeometricalException 
 	*/
 	@Override
-	public Ellipse rotation(int angle) {
+	public Ellipse rotation(int angle) throws GeometricalException {
 		Point center = petitAxe.intersectionPoint(grandAxe);
 		Line newGrandAxe = grandAxe.rotation(angle);
 		Line newPetitAxe = petitAxe.rotation(angle);
 		
-		return new Ellipse(center,newGrandAxe,newPetitAxe);
+		return newEllipse(center,newGrandAxe,newPetitAxe);
 	}
 
 	/**
 	@return a new Ellipse corresponding the its central symmetry
+	@throws GeometricalException 
 	*/
 	@Override
-	public Ellipse centralSymmetry(Point p) {
+	public Ellipse centralSymmetry(Point p) throws GeometricalException {
 		Line newGrandAxe = grandAxe.centralSymmetry(p);
 		Line newPetitAxe = petitAxe.centralSymmetry(p);
 		
 		Point newCenter = newGrandAxe.intersectionPoint(newPetitAxe);
 		
-		return new Ellipse(newCenter,petitAxe,grandAxe);
+		return newEllipse(newCenter,petitAxe,grandAxe);
 	}
 
 	/**
 	@param l is the Line of symmetry
 	@return a new Ellipse corresponding the its axial symmetry
+	@throws GeometricalException 
 	*/
 	@Override
-	public Ellipse axialSymmetry(Line l) {
+	public Ellipse axialSymmetry(Line l) throws GeometricalException {
 		Line newGrandAxe = grandAxe.axialSymmetry(l);
 		Line newPetitAxe = petitAxe.axialSymmetry(l);
 		
 		Point newCenter = newGrandAxe.intersectionPoint(newPetitAxe);
 		
-		return new Ellipse(newCenter,petitAxe,grandAxe);
+		return newEllipse(newCenter,petitAxe,grandAxe);
 	}
 
 	/**
