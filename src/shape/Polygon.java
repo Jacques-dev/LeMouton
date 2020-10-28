@@ -2,7 +2,6 @@ package shape;
 
 import java.util.ArrayList;
 import java.util.Objects;
-
 import exceptions.LineCreationException;
 import point.Point;
 
@@ -122,7 +121,38 @@ public class Polygon extends Shape {
 	@return a textual representation of a Polygon
 	*/
 	public String toString() {
-		return "";
+		StringBuilder s = new StringBuilder();
+		
+		ArrayList<Point> pointList = new ArrayList<Point>();
+		
+		for (Line l : this.lines) {
+			boolean existsP1 = false;
+			boolean existsP2 = false;
+			for (Point p : pointList) {
+				existsP1 = false;
+				existsP2 = false;
+				if (l.getP1().equals(p)) {
+					existsP1 = true;
+				}
+				if (l.getP2().equals(p)) {
+					existsP2 = true;
+				}
+			}
+			if (!existsP1) {
+				pointList.add(l.getP1());
+			}
+			if (!existsP2) {
+				pointList.add(l.getP2());
+			}
+		}
+		
+		s.append("Polygon : \n");
+		for (Point p : pointList) {
+			s.append("\tPoint : " + p.toString() + "\n");
+		}
+		
+		s.append("\n");
+		return s.toString();
 	}
 	
 	/**
