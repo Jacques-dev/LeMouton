@@ -1,5 +1,6 @@
 package shape;
 
+import exceptions.PointCreationException;
 import point.Point;
 
 public abstract class Shape implements ShapesMethodes {

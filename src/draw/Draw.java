@@ -22,7 +22,11 @@ public class Draw implements Iterable<Image> {
 	@param i is an Image containing Shapes
 	*/
 	public void add(final Image i) {
-		draw.add(i);	
+		try {
+			draw.add(i);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e);
+		}
 	}
 	
 	/**

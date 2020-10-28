@@ -1,14 +1,17 @@
 package Test;
 
+import draw.Draw;
+import exceptions.LineCreationException;
+import exceptions.PointCreationException;
 import point.Point;
 import shape.Line;
 import shape.Shape;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LineCreationException, PointCreationException {
 		
-		Point p1 = new Point(1,1);
+		Point p1 = new Point((Float) null,1);
 		Point p2 = new Point(2,3);
 		
 		Line l1 = new Line(p1,p2);

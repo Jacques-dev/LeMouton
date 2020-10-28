@@ -2,6 +2,8 @@ package point;
 
 import java.util.Objects;
 
+import exceptions.PointCreationException;
+
 public class Point {
 	private final float x;
 	private final float y;
@@ -10,13 +12,18 @@ public class Point {
 	@param x is the x-coordinate of the Point
 	@param y is the y-coordinate of the Point
 	*/
-	public Point(float x, float y) {
-		this.x = x;
-		this.y = y;
+	public Point(float x, float y){
+		try {
+			this.x = x;
+			this.y = y;
+		} catch (Exception e) {
+			System.out.println("A Point has been created with Null arguments");
+			throw e;
+		}
 	}
 	
 	/**
-	This is a different constructor
+	This is a different constructor creating a Point in (0,0)
 	*/
 	public Point() {
 		this(0,0);

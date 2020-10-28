@@ -2,6 +2,7 @@ package shape;
 
 import java.util.Objects;
 
+import exceptions.PointCreationException;
 import point.Point;
 
 public class Circle extends Shape {

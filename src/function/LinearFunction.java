@@ -1,4 +1,6 @@
 package function;
+import exceptions.LineCreationException;
+import exceptions.PointCreationException;
 import point.Point;
 
 public class LinearFunction { // y = ax + b
@@ -8,8 +10,11 @@ public class LinearFunction { // y = ax + b
 	/**
 	@param p1 is a Points which will define the linear function of a Line
 	@param p2 is a Points which will define the linear function of a Line
+	@throws LineCreationException 
 	*/
-	public LinearFunction(Point p1, Point p2) {
+	public LinearFunction(Point p1, Point p2) throws LineCreationException {
+		if (p1 == null || p2 == null) throw new LineCreationException();
+		
 		if ((p2.getY() - p1.getY()) == 0) {
 			this.a = ((p2.getY() - p1.getY()) / (p2.getX() - p1.getX()));
 			this.b = (p1.getY() - (a * p1.getX()));
@@ -39,7 +44,6 @@ public class LinearFunction { // y = ax + b
 	}
 	
 	/**
-	
 	@return the original y-intercept
 	*/
 	public float getB() {

@@ -3,6 +3,8 @@ package shape;
 import java.util.Objects;
 
 import exceptions.GeometricalException;
+import exceptions.LineCreationException;
+import exceptions.PointCreationException;
 import point.Point;
 
 public class Ellipse extends Shape {
@@ -15,8 +17,9 @@ public class Ellipse extends Shape {
 	@param grandAxe is the longest line belonging in the Ellipse from center
 	@param petitAxe is the smallest line belonging in the Ellipse from center
 	@throws GeometricalException 
+	@throws LineCreationException 
 	*/
-    public Ellipse(Point center, Line grandAxe, Line petitAxe) throws GeometricalException {
+    public Ellipse(Point center, Line grandAxe, Line petitAxe) throws GeometricalException, LineCreationException{
     	if (center.equals(grandAxe.intersectionPoint(petitAxe))) {
 	    	this.center = center;
 	    	
@@ -47,8 +50,9 @@ public class Ellipse extends Shape {
 	@param grandAxe is the longest line belonging in the Ellipse
 	@param petitAxe is the smallest line belonging in the Ellipse
 	@throws GeometricalException 
+    @throws LineCreationException 
 	*/
-    public Ellipse newEllipse(Point center, Line grandAxe, Line petitAxe) throws GeometricalException {
+    public Ellipse newEllipse(Point center, Line grandAxe, Line petitAxe) throws GeometricalException, LineCreationException{
     	Line newGrandAxe = new Line(grandAxe.getP1(), grandAxe.centerOfLine());
     	Line newPetitAxe = new Line(petitAxe.getP1(), petitAxe.centerOfLine());
     	return new Ellipse(center, newGrandAxe, newPetitAxe);
@@ -86,9 +90,10 @@ public class Ellipse extends Shape {
 	@param ratio is the homothety ratio
 	@return a new Ellipse after a homothety
     @throws GeometricalException 
+    @throws LineCreationException 
 	*/
 	@Override
-	public Ellipse homothety(Point p, int ratio) throws GeometricalException {
+	public Ellipse homothety(Point p, int ratio) throws GeometricalException, LineCreationException{
 		float x = (center.getX()-p.getX())*ratio;
 		float y = (center.getY()-p.getY())*ratio;
 		
@@ -115,9 +120,10 @@ public class Ellipse extends Shape {
 	@param p is the new center Point of the Ellipse after translation
 	@return a new Ellipse after a translation
 	@throws GeometricalException 
+	@throws LineCreationException 
 	*/
 	@Override
-	public Ellipse translation(Point p) throws GeometricalException {
+	public Ellipse translation(Point p) throws GeometricalException, LineCreationException{
 		return newEllipse(p, grandAxe.translation(p), petitAxe.translation(p));
 	}
 
@@ -125,9 +131,10 @@ public class Ellipse extends Shape {
 	@param angle is the degree of rotation
 	@return a new Ellipse after a rotation
 	@throws GeometricalException 
+	@throws LineCreationException 
 	*/
 	@Override
-	public Ellipse rotation(int angle) throws GeometricalException {
+	public Ellipse rotation(int angle) throws GeometricalException, LineCreationException{
 		Point center = petitAxe.intersectionPoint(grandAxe);
 		Line newGrandAxe = grandAxe.rotation(angle);
 		Line newPetitAxe = petitAxe.rotation(angle);
@@ -138,9 +145,10 @@ public class Ellipse extends Shape {
 	/**
 	@return a new Ellipse corresponding the its central symmetry
 	@throws GeometricalException 
+	@throws LineCreationException 
 	*/
 	@Override
-	public Ellipse centralSymmetry(Point p) throws GeometricalException {
+	public Ellipse centralSymmetry(Point p) throws GeometricalException, LineCreationException{
 		Line newGrandAxe = grandAxe.centralSymmetry(p);
 		Line newPetitAxe = petitAxe.centralSymmetry(p);
 		
@@ -153,9 +161,10 @@ public class Ellipse extends Shape {
 	@param l is the Line of symmetry
 	@return a new Ellipse corresponding the its axial symmetry
 	@throws GeometricalException 
+	@throws LineCreationException 
 	*/
 	@Override
-	public Ellipse axialSymmetry(Line l) throws GeometricalException {
+	public Ellipse axialSymmetry(Line l) throws GeometricalException, LineCreationException{
 		Line newGrandAxe = grandAxe.axialSymmetry(l);
 		Line newPetitAxe = petitAxe.axialSymmetry(l);
 		

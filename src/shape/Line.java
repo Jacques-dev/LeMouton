@@ -2,6 +2,8 @@ package shape;
 
 import java.util.Objects;
 
+import exceptions.LineCreationException;
+import exceptions.PointCreationException;
 import function.LinearFunction;
 import point.Point;
 
@@ -13,8 +15,9 @@ public class Line extends Shape {
 	/**
 	@param p1 is one of the point belonging to the line
 	@param p2 is one of the point belonging to the line
+	@throws LineCreationException 
 	*/
-	public Line(Point p1, Point p2) {
+	public Line(Point p1, Point p2) throws LineCreationException {
 		this.p1 = p1;
 		this.p2 = p2;
 		this.f = new LinearFunction(p1,p2);
@@ -40,9 +43,10 @@ public class Line extends Shape {
 	@param origine is the homothety origin
 	@param ratio is the homothety ratio
 	@return a new Line after a homothety
+	@throws LineCreationException 
 	*/
 	@Override
-	public Line homothety(Point origine, int ratio) {
+	public Line homothety(Point origine, int ratio) throws LineCreationException {
 		float x1 = origine.getX() + ratio * (p1.getX() - origine.getX());
 		float y1 = origine.getY() + ratio * (p1.getY() - origine.getY());
 		
@@ -54,9 +58,10 @@ public class Line extends Shape {
 	/**
 	@param p is the new center Point of the Line after translation
 	@return a new Line after a translation
+	@throws LineCreationException 
 	*/
 	@Override
-	public Line translation(Point p) {
+	public Line translation(Point p) throws LineCreationException {
 		Point center = centerOfLine();
 		
 		float center_x = center.distanceX(p1);
@@ -71,9 +76,10 @@ public class Line extends Shape {
 	/**
 	@param angle is the degree of rotation
 	@return a new Line after a rotation
+	@throws LineCreationException 
 	*/
 	@Override
-	public Line rotation(int angle) {
+	public Line rotation(int angle) throws LineCreationException {
 		Point center = this.intersectionPoint(this);
 		Point newP1 = this.rotate(p1, center, angle);
 		Point newP2 = this.rotate(p2, center, angle);
@@ -83,18 +89,20 @@ public class Line extends Shape {
 	
 	/**
 	@return a new Line corresponding the its central symmetry
+	@throws LineCreationException 
 	*/
 	@Override
-	public Line centralSymmetry(Point p) {
+	public Line centralSymmetry(Point p) throws LineCreationException {
 		return new Line(symmetry(p1, p), symmetry(p2, p));
 	}
 	
 	/**
 	@param l is the Line of symmetry
 	@return a new Line corresponding the its axial symmetry
+	@throws LineCreationException 
 	*/
 	@Override
-	public Line axialSymmetry(Line l) {
+	public Line axialSymmetry(Line l) throws LineCreationException {
 		Point p1Onl = f.getNewPointOnTheLine(p1.getX(), p1.getY(), l.getP1());
 		Point p2Onl = f.getNewPointOnTheLine(p2.getX(), p2.getY(), l.getP2());
 		
