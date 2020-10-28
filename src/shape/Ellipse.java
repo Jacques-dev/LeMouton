@@ -19,7 +19,7 @@ public class Ellipse extends Shape {
 	@throws LineCreationException 
 	*/
     public Ellipse(Point center, Line l1, Line l2) throws EllipseCreationException, LineCreationException{
-    	if (center.equals(l1.intersectionPoint(l2))) {
+    	if (center.equals(l1.intersectionPoint(l2)) && l1.isOrthogonal(l2)) {
 	    	this.center = center;
 	    	
 	    	Point newPoint;
@@ -49,7 +49,7 @@ public class Ellipse extends Shape {
 	    		this.petitAxe = new Line(petitAxe.getP1(), newPoint);
 	    	}
     	} else {
-    		throw new EllipseCreationException("[grandAxe] and [petitAxe] have to contains the same point as [center]");
+    		throw new EllipseCreationException("[grandAxe] and [petitAxe] have to contains the same point as [center] and be orthogonal");
     	}
     }
     

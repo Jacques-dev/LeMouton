@@ -10,9 +10,13 @@ public class Point {
 	@param x is the x-coordinate of the Point
 	@param y is the y-coordinate of the Point
 	*/
-	public Point(float x, float y){
-		this.x = x;
-		this.y = y;
+	public Point(float x, float y) {
+		try {
+			this.x = x;
+			this.y = y;
+		} catch (Exception e) {
+			throw new IllegalArgumentException(e);
+		}
 	}
 	
 	/**

@@ -120,7 +120,7 @@ public class Line extends Shape {
 	@param l2 is the second line to calculate the intersection point
 	@return a Point which is the intersection point of two lines
 	*/
-	public Point intersectionPoint(Line l2) {
+	public Point intersectionPoint(Line l2) { // ax + b = a'x + b'
 		
 		float a1 = f.getA();
 		float b1 = f.getB();
@@ -131,13 +131,33 @@ public class Line extends Shape {
 		
 		float x;
 		if ((a1-a2) == 0) x = 0;
-		else x = (b2 - b1) / (a1-a2);
+		else x = (b2 - b1) / (a1 - a2);
 		
 		float y = a1 * x + b1;
-		System.out.println(new Point(x,y));
+
 		return new Point(x,y);
 	}
 	
+	/**
+	@param l2 is the second line to calculate l2 is orthogonal with this
+	@return a boolean which indicate if two Lines are orthogonal
+	*/
+	public boolean isOrthogonal(Line l2) { // y = ax + b    <->   ax - zy + b
+		float a1 = f.getA();
+		
+		LinearFunction f2 = l2.getF();
+		float a2 = f2.getA();
+		
+		System.out.println(a1);
+		System.out.println(a2);
+		if (a1 == a2) return false;
+		if (1 + (a1 * a2) == 0) return true;
+		return false;
+	}
+	
+	/**
+	@return a Point which is the center point of this
+	*/
 	public Point centerOfLine() {
 		float x, y;
 		

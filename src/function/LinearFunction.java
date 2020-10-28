@@ -14,12 +14,15 @@ public class LinearFunction { // y = ax + b
 	public LinearFunction(Point p1, Point p2) throws LineCreationException {
 		if (p1 == null || p2 == null) throw new LineCreationException();
 		
-		if ((p2.getY() - p1.getY()) == 0) {
-			this.a = ((p2.getY() - p1.getY()) / (p2.getX() - p1.getX()));
-			this.b = (p1.getY() - (a * p1.getX()));
-		} else {
+		if ((p2.getY() == p1.getY())) { //horizontal
 			this.a = 0;
 			this.b = p1.getY();
+		} else if (p2.getX() == p1.getX()) { //vertical
+			this.a = 1;
+			this.b = 0;
+		} else {
+			this.a = ((p2.getY() - p1.getY()) / (p2.getX() - p1.getX()));
+			this.b = (p1.getY() - (a * p1.getX()));
 		}
 	}
 	
