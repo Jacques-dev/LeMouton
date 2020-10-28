@@ -56,15 +56,15 @@ public class LinearFunction { // y = ax + b
 		if (a != 0) {
 			if (a % 1 == 0) {
 				if (b % 1 == 0) {
-					return "[y = " + (int)a + "x + " + (int)b + "]";
+					return (int)a + "x + " + (int)b;
 				}
-				return "[y = " + (int)a + "x + " + b + "]";
+				return (int)a + "x + " + b;
 			}
-			return "[y = " + a + "x + " + b + "]";
+			return a + "x + " + b;
 		}
 		else {
-			if (b % 1 == 0) return "[y = " + (int)b + "]";
-			return "[y = " + b + "]";
+			if (b % 1 == 0) return "" + (int)b;
+			return "" + b;
 		}
 	}
 }

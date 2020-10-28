@@ -134,7 +134,7 @@ public class Line extends Shape {
 		else x = (b2 - b1) / (a1-a2);
 		
 		float y = a1 * x + b1;
-		
+		System.out.println(new Point(x,y));
 		return new Point(x,y);
 	}
 	
@@ -152,7 +152,7 @@ public class Line extends Shape {
 	*/
 	@Override
 	public String toString() {
-		return p1.toString() + p2.toString() + " " + f.toString();
+		return "Line f(x)= " + f.toString()+ p1.toString() + "-" + p2.toString();
 	}
 	
 	/**

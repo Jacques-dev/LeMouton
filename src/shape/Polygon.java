@@ -7,7 +7,7 @@ import exceptions.LineCreationException;
 import point.Point;
 
 
-public class Polygones extends Shape {
+public class Polygon extends Shape {
 
 	private final ArrayList<Line> lines;
 	private Point center;
@@ -15,7 +15,7 @@ public class Polygones extends Shape {
 	/**
 	@param lines is a list of the lines belonging to the Polygon
 	*/
-	public Polygones(ArrayList<Line> lines) {
+	public Polygon(ArrayList<Line> lines) {
 		this.lines = lines;
 		float centerX = 0, centerY = 0;
 		for (int i = 0; i < lines.size(); i++) {
@@ -55,12 +55,12 @@ public class Polygones extends Shape {
 	@throws LineCreationException 
 	*/
 	@Override
-	public Polygones homothety(Point p, int ratio) throws LineCreationException {
+	public Polygon homothety(Point p, int ratio) throws LineCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).homothety(p, ratio));
 		}
-		return new Polygones(tmpLines);
+		return new Polygon(tmpLines);
 	}
 
 	/**
@@ -69,12 +69,12 @@ public class Polygones extends Shape {
 	@throws LineCreationException 
 	*/
 	@Override
-	public Polygones translation(Point p) throws LineCreationException {
+	public Polygon translation(Point p) throws LineCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).translation(p));
 		}
-		return new Polygones(tmpLines);
+		return new Polygon(tmpLines);
 	}
 
 	/**
@@ -83,12 +83,12 @@ public class Polygones extends Shape {
 	@throws LineCreationException 
 	*/
 	@Override
-	public Polygones rotation(int angle) throws LineCreationException {
+	public Polygon rotation(int angle) throws LineCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).rotation(angle));
 		}
-		return new Polygones(tmpLines);
+		return new Polygon(tmpLines);
 	}
 
 	/**
@@ -96,12 +96,12 @@ public class Polygones extends Shape {
 	@throws LineCreationException 
 	*/
 	@Override
-	public Polygones centralSymmetry(Point p) throws LineCreationException {
+	public Polygon centralSymmetry(Point p) throws LineCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).centralSymmetry(p));
 		}
-		return new Polygones(tmpLines);
+		return new Polygon(tmpLines);
 	}
 
 	/**
@@ -110,12 +110,12 @@ public class Polygones extends Shape {
 	@throws LineCreationException 
 	*/
 	@Override
-	public Polygones axialSymmetry(Line l) throws LineCreationException {
+	public Polygon axialSymmetry(Line l) throws LineCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).axialSymmetry(l));
 		}
-		return new Polygones(tmpLines);
+		return new Polygon(tmpLines);
 	}
 	
 	/**
@@ -131,8 +131,8 @@ public class Polygones extends Shape {
 	*/
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof Polygones)) {return false;}
-		Polygones x = (Polygones) o;
+		if (!(o instanceof Polygon)) {return false;}
+		Polygon x = (Polygon) o;
 		return lines.equals(x.lines) && center.equals(x.center);
 	}
 	
