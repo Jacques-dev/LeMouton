@@ -59,17 +59,24 @@ public class Line extends Shape {
 	@return a new Line after a translation
 	@throws LineCreationException 
 	*/
-	@Override
-	public Line translation(Point p) throws LineCreationException {
-		Point center = centerOfLine();
+	public Line translation(Point origin, Point destination) throws LineCreationException {
+		float center_x = origin.distanceX(p1);
+		float center_y = origin.distanceY(p1);
 		
-		float center_x = center.distanceX(p1);
-		float center_y = center.distanceY(p1);
-		
-		Point newP1 = new Point(p.getX()-center_x, p.getY()-center_y);
-		Point newP2 = new Point(p.getX()+center_x, p.getY()+center_y);
+		Point newP1 = new Point(destination.getX()-center_x, destination.getY()-center_y);
+		Point newP2 = new Point(destination.getX()+center_x, destination.getY()+center_y);
 		
 		return new Line(newP1, newP2);
+	}
+	
+	/**
+	@param p is the new center Point of the Line after translation
+	@return a new Line after a translation
+	@throws LineCreationException 
+	*/
+	@Override
+	public Line translation(Point destination) throws LineCreationException {
+		return translation(centerOfLine(), destination);
 	}
 	
 	/**
@@ -184,7 +191,7 @@ public class Line extends Shape {
 	*/
 	@Override
 	public String toString() {
-		return "Line f(x)= " + f.toString()+ p1.toString() + "-" + p2.toString();
+		return "Line f(x)= " + f.toString() + " [" + p1.toString() + "-" + p2.toString() + "]";
 	}
 	
 	/**

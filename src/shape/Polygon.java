@@ -72,7 +72,7 @@ public class Polygon extends Shape {
 	public Polygon translation(Point p) throws LineCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
-			tmpLines.add(this.lines.get(i).translation(p));
+			tmpLines.add(this.lines.get(i).translation(center,p));
 		}
 		return new Polygon(tmpLines);
 	}
@@ -86,7 +86,7 @@ public class Polygon extends Shape {
 	public Polygon rotation(int angle) throws LineCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
-			tmpLines.add(this.lines.get(i).rotation(angle));
+			tmpLines.add(this.lines.get(i).rotationFromPoint(angle,center));
 		}
 		return new Polygon(tmpLines);
 	}
