@@ -2,7 +2,6 @@ package shape;
 
 import exceptions.GeometricalException;
 import exceptions.LineCreationException;
-import exceptions.PointCreationException;
 import point.Point;
 
 public interface ShapesMethodes {

@@ -3,7 +3,6 @@ package shape;
 import java.util.Objects;
 
 import exceptions.LineCreationException;
-import exceptions.PointCreationException;
 import function.LinearFunction;
 import point.Point;
 

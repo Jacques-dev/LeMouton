@@ -1,6 +1,5 @@
 package function;
 import exceptions.LineCreationException;
-import exceptions.PointCreationException;
 import point.Point;
 
 public class LinearFunction { // y = ax + b

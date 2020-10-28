@@ -4,7 +4,6 @@ import java.util.Objects;
 
 import exceptions.GeometricalException;
 import exceptions.LineCreationException;
-import exceptions.PointCreationException;
 import point.Point;
 
 public class Ellipse extends Shape {

@@ -3,6 +3,7 @@ package shape;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import exceptions.LineCreationException;
 import point.Point;
 
 
@@ -51,9 +52,10 @@ public class Polygones extends Shape {
 	@param origine is the homothety origin
 	@param ratio is the homothety ratio
 	@return a new Polygon after a homothety
+	@throws LineCreationException 
 	*/
 	@Override
-	public Polygones homothety(Point p, int ratio) {
+	public Polygones homothety(Point p, int ratio) throws LineCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).homothety(p, ratio));
@@ -64,9 +66,10 @@ public class Polygones extends Shape {
 	/**
 	@param p is the new center Point of the Polygon after translation
 	@return a new Polygon after a translation
+	@throws LineCreationException 
 	*/
 	@Override
-	public Polygones translation(Point p) {
+	public Polygones translation(Point p) throws LineCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).translation(p));
@@ -77,9 +80,10 @@ public class Polygones extends Shape {
 	/**
 	@param angle is the degree of rotation
 	@return a new Polygon after a rotation
+	@throws LineCreationException 
 	*/
 	@Override
-	public Polygones rotation(int angle) {
+	public Polygones rotation(int angle) throws LineCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).rotation(angle));
@@ -89,9 +93,10 @@ public class Polygones extends Shape {
 
 	/**
 	@return a new Polygon corresponding the its central symmetry
+	@throws LineCreationException 
 	*/
 	@Override
-	public Polygones centralSymmetry(Point p) {
+	public Polygones centralSymmetry(Point p) throws LineCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).centralSymmetry(p));
@@ -102,9 +107,10 @@ public class Polygones extends Shape {
 	/**
 	@param l is the Line of symmetry
 	@return a new Polygon corresponding the its axial symmetry
+	@throws LineCreationException 
 	*/
 	@Override
-	public Polygones axialSymmetry(Line l) {
+	public Polygones axialSymmetry(Line l) throws LineCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).axialSymmetry(l));
