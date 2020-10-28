@@ -79,9 +79,21 @@ public class Line extends Shape {
 	*/
 	@Override
 	public Line rotation(int angle) throws LineCreationException {
-		Point center = this.intersectionPoint(this);
+		Point center = this.centerOfLine();
 		Point newP1 = this.rotate(p1, center, angle);
-		Point newP2 = this.rotate(p2, center, angle);
+		Point newP2 = symmetry(p2, center);
+		
+		return new Line(newP1,newP2);
+	}
+	
+	/**
+	@param angle is the degree of rotation
+	@return a new Line after a rotation
+	@throws LineCreationException 
+	*/
+	public Line rotationFromPoint(int angle, Point p) throws LineCreationException {
+		Point newP1 = this.rotate(p1, p, angle);
+		Point newP2 = symmetry(p2, p);
 		
 		return new Line(newP1,newP2);
 	}
