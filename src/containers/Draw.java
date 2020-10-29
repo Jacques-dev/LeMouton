@@ -90,7 +90,7 @@ public class Draw implements Iterable<Image>, Container {
 		StringBuilder resultat = new StringBuilder("\tDraw\n");
 		
 		for (Image image : this) {
-			resultat.append("     " + image.toString() +"\n");
+			resultat.append(image.toString() +"\n");
 		}
 	
 		return resultat.toString();

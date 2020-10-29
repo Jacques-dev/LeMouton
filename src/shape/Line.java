@@ -127,19 +127,17 @@ public class Line extends Shape {
 	*/
 	@Override
 	public Line axialSymmetry(Line l) throws LineCreationException {
-		float a1 = f.getA();
-		float a2 = l.getF().getA();
-		
-		Vector vecteur_l = new Vector(l);
-		Vector vecteur_this = new Vector(this);
-		
-		
+	
 		Point intersect_P1 = this.intersectionPoint(l);
-		float intersect_P1_x = intersect_P1.getX();
+		
+		Vector vec = new Vector(p1, intersect_P1);
+		Point P1_sym = new Point(intersect_P1.getX() - vec.getY(), intersect_P1.getY() - vec.getX());
 		
 		
+		Vector vec2 = new Vector(p2, intersect_P1);
+		Point P2_sym = new Point(intersect_P1.getX() - vec2.getY(), intersect_P1.getY() - vec2.getX());
 		
-		return null;
+		return new Line(P1_sym, P2_sym);
 	}
 
 	/**
