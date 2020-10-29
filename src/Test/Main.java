@@ -20,9 +20,9 @@ public class Main {
 		
 		
 		Point p0 = new Point(1,1);
-		Point p1 = new Point(-1,2);
+		Point p1 = new Point(1,2);
 		Point p2 = new Point(8,3);
-		Point p3 = new Point(2,3);
+		Point p3 = new Point(3,1);
 		Point p4 = new Point(2,2);
 		Point p5 = new Point(6,-2);
 		Point p6 = new Point(-2,2);
