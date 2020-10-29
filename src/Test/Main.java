@@ -24,21 +24,14 @@ public class Main {
 		Point p2 = new Point(8,3);
 		Point p3 = new Point(3,1);
 		Point p4 = new Point(2,2);
-		Point p5 = new Point(6,-2);
-		Point p6 = new Point(-2,2);
-		Point p7 = new Point(7/2,1/2);
-		Point p8 = new Point(4/3,3);
-		Point p9 = new Point(3,-3);
+		Point p5 = new Point(4/3,3);
 		
 		Line l1 = new Line(p0,p1);
 		Line l2 = new Line(p0,p3);
-		Line l3 = new Line(p4,p5);
-		Line l4 = new Line(p6,p7);
-		Line l5 = new Line(p8,p9);
-		Line l6 = new Line(p1,p8);
-		Line l7 = new Line(p8,p3);
-		Line l8 = new Line(p3,p4);
-		Line l9 = new Line(p4,p0);
+		Line l3 = new Line(p1,p5);
+		Line l4 = new Line(p5,p3);
+		Line l5 = new Line(p3,p4);
+		Line l6 = new Line(p4,p0);
 		
 		Circle c1 = new Circle(p0, 5);
 		
@@ -46,10 +39,10 @@ public class Main {
 		
 		ArrayList<Line> linesList = new ArrayList<Line>();
 		linesList.add(l1);
+		linesList.add(l3);
+		linesList.add(l4);
+		linesList.add(l5);
 		linesList.add(l6);
-		linesList.add(l7);
-		linesList.add(l8);
-		linesList.add(l9);
 		
 		Polygon poly1 = new Polygon(linesList);
 		
