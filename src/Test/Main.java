@@ -19,15 +19,15 @@ public class Main {
 		
 		
 		
-		Point p0 = new Point(1,1);
-		Point p1 = new Point(1,2);
-		Point p2 = new Point(8,3);
-		Point p3 = new Point(3,1);
+		Point p0 = new Point(-4,6);
+		Point p1 = new Point(2,0);
+		Point p2 = new Point(-2,2);
+		Point p3 = new Point(0,4);
 		Point p4 = new Point(2,2);
 		Point p5 = new Point(4/3,3);
 		
 		Line l1 = new Line(p0,p1);
-		Line l2 = new Line(p0,p3);
+		Line l2 = new Line(p2,p3);
 		Line l3 = new Line(p1,p5);
 		Line l4 = new Line(p5,p3);
 		Line l5 = new Line(p3,p4);
@@ -35,7 +35,7 @@ public class Main {
 		
 		Circle c1 = new Circle(p0, 5);
 		
-		Ellipse e1 = new Ellipse(p0, l1, l2);
+		Ellipse e1 = new Ellipse(l1.centerOfLine(), l1, l2);
 		
 		ArrayList<Line> linesList = new ArrayList<Line>();
 		linesList.add(l1);

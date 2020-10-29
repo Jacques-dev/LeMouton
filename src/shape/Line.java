@@ -167,9 +167,9 @@ public class Line extends Shape {
 	@param l2 is the second line to calculate l2 is orthogonal with this
 	@return a boolean which indicate if two Lines are orthogonal
 	*/
-	public boolean isOrthogonal(Line l2) { // y = ax + b    <->   ax - zy + b
+	public boolean isOrthogonal(Line l2) {
 		Vector v1 = new Vector(this);
-		Vector v2 = new Vector(this.getP1(),l2.getP1());
+		Vector v2 = new Vector(l2.getP1(),l2.getP2());
 		return (v1.getX()*v2.getX()) + (v1.getY()*v2.getY()) == 0;
 	}
 	
