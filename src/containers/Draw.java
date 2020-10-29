@@ -1,11 +1,9 @@
-package draw;
+package containers;
 
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
-
-import image.Image;
 
 public class Draw implements Iterable<Image> {
 	

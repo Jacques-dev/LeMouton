@@ -2,6 +2,7 @@ package shape;
 
 import java.util.Objects;
 
+import containers.Shape;
 import exceptions.EllipseCreationException;
 import exceptions.LineCreationException;
 import point.Point;

@@ -2,15 +2,15 @@ package Test;
 
 import java.util.ArrayList;
 
+import containers.Image;
+import containers.Shape;
 import exceptions.EllipseCreationException;
 import exceptions.LineCreationException;
-import image.Image;
 import point.Point;
 import shape.Circle;
 import shape.Ellipse;
 import shape.Line;
 import shape.Polygon;
-import shape.Shape;
 import shape.ShapesMethodes;
 
 public class Main {

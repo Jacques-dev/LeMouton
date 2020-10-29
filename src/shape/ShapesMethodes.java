@@ -1,5 +1,6 @@
 package shape;
 
+import containers.Shape;
 import exceptions.EllipseCreationException;
 import exceptions.LineCreationException;
 import point.Point;
