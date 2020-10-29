@@ -92,7 +92,7 @@ public class Line extends Shape {
 	public Line rotation(int angle) throws LineCreationException {
 		Point center = this.centerOfLine();
 		Point newP1 = this.p1.rotate(center, angle);
-		Point newP2 = p2.symmetry(center);
+		Point newP2 = newP1.symmetry(center);
 		
 		return new Line(newP1,newP2);
 	}
@@ -106,7 +106,7 @@ public class Line extends Shape {
 	public Line rotationFromPoint(int angle, Point p) throws LineCreationException {
 		Point center = this.centerOfLine();
 		Point newP1 = this.p1.rotate(p, angle);
-		Point newP2 = p2.symmetry(center);
+		Point newP2 = newP1.symmetry(center);
 		
 		return new Line(newP1,newP2);
 	}

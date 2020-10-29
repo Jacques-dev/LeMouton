@@ -20,6 +20,11 @@ public class Ellipse extends Shape {
 	@throws LineCreationException 
 	*/
     public Ellipse(Point center, Line l1, Line l2) throws EllipseCreationException, LineCreationException {
+    	if (l1.perimeter() == l2.perimeter()) {
+    		throw new EllipseCreationException("'l1' and 'l2' are similar, meaning that this will not creat an Ellipse but a Circle");
+    	}
+    	
+    	
     	if (center.equals(l1.intersectionPoint(l2))) {
     		if (l1.isOrthogonal(l2)) {
 		    	this.center = center;
