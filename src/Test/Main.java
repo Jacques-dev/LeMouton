@@ -67,11 +67,11 @@ public class Main {
 		
 		i1.perimeter();
 		i1.area();
-		((ShapesMethodes) i1).homothety(p2, 10);
-		((ShapesMethodes) i1).translation(p2);
-		((ShapesMethodes) i1).rotation(35);
-		((ShapesMethodes) i1).centralSymmetry(p4);
-		((ShapesMethodes) i1).axialSymmetry(l2);
+		i1.homothety(p2, 10);
+		i1.translation(p2);
+		i1.rotation(35);
+		i1.centralSymmetry(p4);
+		i1.axialSymmetry(l2);
 		
 		/*
 		ArrayList<Line> list = new ArrayList<Line>();

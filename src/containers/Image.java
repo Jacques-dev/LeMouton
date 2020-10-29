@@ -1,30 +1,38 @@
 package containers;
 
 import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
+
+import exceptions.EllipseCreationException;
+import exceptions.LineCreationException;
+import point.Point;
+import shape.Line;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-public class Image implements Iterable<Shape> {
+public class Image implements Iterable<Shape>, Container {
 	
-	private final Set<Shape> image;
+	private final List<Shape> image;
 	
 	/**
 	An Image is a set of Shapes
 	*/
 	public Image() {
-		image = new TreeSet<Shape>();
+		image = new ArrayList<Shape>();
 	}
 	
 	/**
 	@param s is a Shape
 	*/
 	public void add(final Shape s) {
-		image.add(s);
+		try {
+			if (!image.contains(s)) image.add(s);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e);
+		}
 	}
 	
 	/**
@@ -98,8 +106,7 @@ public class Image implements Iterable<Shape> {
 	This method able to sort all the Shapes already stocked in set by their perimeter
 	*/
 	public void sortByPerimeter() {
-		List<Shape> test = new ArrayList<Shape>(image);
-		Collections.sort(test, new Comparator<Shape>() {
+		Collections.sort(image, new Comparator<Shape>() {
 			public int compare(Shape s1, Shape s2) {
 				return s1.compareToPerimeters(s2);
 			}
@@ -110,8 +117,7 @@ public class Image implements Iterable<Shape> {
 	This method able to sort all the Shapes already stocked in set by their area
 	*/
 	public void sortByArea() {
-		List<Shape> test = new ArrayList<Shape>(image);
-		Collections.sort(test, new Comparator<Shape>() {
+		Collections.sort(image, new Comparator<Shape>() {
 			public int compare(Shape s1, Shape s2) {
 				return s1.compareToAreas(s2);
 			}
@@ -129,4 +135,61 @@ public class Image implements Iterable<Shape> {
 		}
 		return resultat;
 	}
+
+	@Override
+	public Image homothety(Point p, int ratio) throws EllipseCreationException, LineCreationException {
+		Image i = new Image();
+		
+		for (Shape shape : this) {
+			i.add((Shape) shape.homothety(p, ratio));
+		}
+		
+		return i;
+	}
+
+	@Override
+	public Image translation(Point p) throws EllipseCreationException, LineCreationException {
+		Image i = new Image();
+		
+		for (Shape shape : this) {
+			i.add((Shape) shape.translation(p));
+		}
+		
+		return i;
+	}
+
+	@Override
+	public Image rotation(int angle) throws EllipseCreationException, LineCreationException {
+		Image i = new Image();
+		
+		for (Shape shape : this) {
+			i.add((Shape) shape.rotation(angle));
+		}
+		
+		return i;
+	}
+
+	@Override
+	public Image centralSymmetry(Point p) throws EllipseCreationException, LineCreationException {
+		Image i = new Image();
+		
+		for (Shape shape : this) {
+			i.add((Shape) shape.centralSymmetry(p));
+		}
+		
+		return i;
+	}
+
+	@Override
+	public Image axialSymmetry(Line l) throws EllipseCreationException, LineCreationException {
+		Image i = new Image();
+		
+		for (Shape shape : this) {
+			i.add((Shape) shape.axialSymmetry(l));
+		}
+		
+		return i;
+	}
+
+	
 }
