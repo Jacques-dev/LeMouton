@@ -141,9 +141,9 @@ public class Ellipse extends Shape {
 	*/
 	@Override
 	public Ellipse rotation(int angle) throws EllipseCreationException, LineCreationException{
-		Point center = petitAxe.intersectionPoint(grandAxe);
-		Line newGrandAxe = grandAxe.rotation(angle);
-		Line newPetitAxe = petitAxe.rotation(angle);
+		Line newGrandAxe = grandAxe.rotationFromPoint(angle,center);
+		Line newPetitAxe = petitAxe.rotationFromPoint(angle,center);
+		Point center = newGrandAxe.intersectionPoint(newPetitAxe);
 		
 		return newEllipse(center,newGrandAxe,newPetitAxe);
 	}
@@ -160,7 +160,7 @@ public class Ellipse extends Shape {
 		
 		Point newCenter = newGrandAxe.intersectionPoint(newPetitAxe);
 		
-		return newEllipse(newCenter,petitAxe,grandAxe);
+		return newEllipse(newCenter,newGrandAxe,newPetitAxe);
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class Ellipse extends Shape {
 		
 		Point newCenter = newGrandAxe.intersectionPoint(newPetitAxe);
 		
-		return newEllipse(newCenter,petitAxe,grandAxe);
+		return newEllipse(newCenter,newGrandAxe,newPetitAxe);
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class Ellipse extends Shape {
 	public boolean equals(Object o) {
 		if (!(o instanceof Ellipse)) {return false;}
 		Ellipse x = (Ellipse) o;
-		return center == x.center && grandAxe == x.grandAxe && petitAxe == x.petitAxe;
+		return center.equals(x.center) && grandAxe.equals(x.grandAxe) && petitAxe.equals(x.petitAxe);
 	}
 	
 	/**

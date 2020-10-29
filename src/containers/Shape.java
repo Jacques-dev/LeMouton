@@ -6,12 +6,12 @@ import shape.ShapesMethodes;
 public abstract class Shape implements ShapesMethodes, Container {
 	
 	/**
-	@param p is the original Point
-	@param center is the Point of symetry
+	@param origin is the original Point
+	@param symetricPoint is the Point of symetry
 	@return a new Point after symmetry
 	*/
-	public Point symmetry(Point p, Point center) {
-		return new Point(-(p.getX() - center.getX()) + center.getX(),-(p.getY() - center.getY()) + center.getY());
+	public Point symmetry(Point origin, Point symetricPoint) {
+		return new Point(-(origin.getX() - symetricPoint.getX()) + symetricPoint.getX(),-(origin.getY() - symetricPoint.getY()) + symetricPoint.getY());
 	}
 
 	/**

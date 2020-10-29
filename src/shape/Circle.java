@@ -109,7 +109,7 @@ public class Circle extends Shape {
 	public boolean equals(Object o) {
 		if (!(o instanceof Circle)) {return false;}
 		Circle x = (Circle) o;
-		return center == x.center && radius == x.radius && pi == x.pi;
+		return center.equals(x.center) && radius == x.radius && pi == x.pi;
 	}
 	
 	/**

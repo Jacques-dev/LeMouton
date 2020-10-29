@@ -11,6 +11,7 @@ public class Line extends Shape {
 	private final Point p1;
 	private final Point p2;
 	private final LinearFunction f;
+	private final int width = 1;
 	
 	/**
 	@param p1 is one of the point belonging to the line
@@ -28,7 +29,7 @@ public class Line extends Shape {
 	*/
 	@Override
 	public double area() {
-		return 0;
+		return p1.distance(p2) * width;
 	}
 
 	/**
@@ -36,7 +37,7 @@ public class Line extends Shape {
 	*/
 	@Override
 	public double perimeter() {
-		return p1.distance(p2);
+		return (p1.distance(p2) * 2) + (2 * width);
 	}
 
 	/**
