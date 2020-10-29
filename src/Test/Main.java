@@ -55,39 +55,23 @@ public class Main {
 		
 		Image i1 = new Image();
 		i1.add(l1);
-		i1.add(l2);
-		i1.add(l3);
-		i1.add(l4);
-		i1.add(l5);
-		i1.add(l6);
-		i1.add(l7);
-		i1.add(l8);
-		i1.add(l9);
 		i1.add(c1);
 		i1.add(e1);
 		i1.add(poly1);
 		
 		Image i2 = new Image();
 		i2.add(l1);
-		i2.add(l2);
-		i2.add(l3);
-		i2.add(l4);
-		i2.add(l5);
-		i2.add(l6);
-		i2.add(l7);
-		i2.add(l8);
-		i2.add(l9);
 		i2.add(c1);
 		i2.add(e1);
 		i2.add(poly1);
 		
-		i2.perimeter();
-		i2.area();
-		i2.homothety(p2, 10);
-		i2.translation(p2);
-		i2.rotation(45);
-		i2.centralSymmetry(p4);
-		i2.axialSymmetry(l2);
+		System.out.println(i2.perimeter());
+		System.out.println(i2.area());
+		i2=i2.homothety(p2, 10);
+		i2=i2.translation(p2);
+		i2=i2.rotation(45);
+		i2=i2.centralSymmetry(p4);
+		i2=i2.axialSymmetry(l2);
 		
 		Draw d1 = new Draw();
 		d1.add(i1);
@@ -97,13 +81,13 @@ public class Main {
 		d2.add(i1);
 		d2.add(i2);
 		
-		d2.perimeter();
-		d2.area();
-		d2.homothety(p2, 10);
-		d2.translation(p2);
-		d2.rotation(45);
-		d2.centralSymmetry(p4);
-		d2.axialSymmetry(l2);
+		System.out.println(d2.perimeter());
+		System.out.println(d2.area());
+		d2=d2.homothety(p2, 10);
+		d2=d2.translation(p2);
+		d2=d2.rotation(45);
+		d2=d2.centralSymmetry(p4);
+		d2=d2.axialSymmetry(l2);
 		
 		Mural m1 = new Mural();
 		m1.add(d1);

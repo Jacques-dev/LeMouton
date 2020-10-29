@@ -104,8 +104,9 @@ public class Line extends Shape {
 	@throws LineCreationException 
 	*/
 	public Line rotationFromPoint(int angle, Point p) throws LineCreationException {
+		Point center = this.centerOfLine();
 		Point newP1 = this.p1.rotate(p, angle);
-		Point newP2 = p2.symmetry(p);
+		Point newP2 = p2.symmetry(center);
 		
 		return new Line(newP1,newP2);
 	}
@@ -197,7 +198,7 @@ public class Line extends Shape {
 		
 		StringBuilder resultat = new StringBuilder("\t\t\tLine\n");
 		
-		resultat.append("\t\t\t\tf(x) = " + f.toString() + "\tcoord : [" + p1.toString() + "; " + p2.toString() + "]\n");
+		resultat.append("\t\t\t\tcoord : [" + p1.toString() + "; " + p2.toString() + "]\tf(x) = " + f.toString() + "\n");
 	
 		return resultat.toString();
 	}

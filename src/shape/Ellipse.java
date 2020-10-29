@@ -141,8 +141,8 @@ public class Ellipse extends Shape {
 	*/
 	@Override
 	public Ellipse rotation(int angle) throws EllipseCreationException, LineCreationException{
-		Line newGrandAxe = grandAxe.rotationFromPoint(angle,center);
-		Line newPetitAxe = petitAxe.rotationFromPoint(angle,center);
+		Line newGrandAxe = grandAxe.rotation(angle);
+		Line newPetitAxe = petitAxe.rotation(angle);
 		Point center = newGrandAxe.intersectionPoint(newPetitAxe);
 		
 		return newEllipse(center,newGrandAxe,newPetitAxe);
@@ -186,7 +186,7 @@ public class Ellipse extends Shape {
 		
 		StringBuilder resultat = new StringBuilder("\t\t\tEllipse\n");
 		
-		resultat.append("\t\t\t\tcenter : " + center + "\tGrand Axe : " + grandAxe + "\tPetit Axe : " + petitAxe + "\n");
+		resultat.append("\t\t\t\tcenter : " + center + "\n\t\t\t\tGrand Axe : \n\t" + grandAxe + "\n\t\t\t\tPetit Axe : \n\t" + petitAxe + "\n");
 	
 		return resultat.toString();
 	}

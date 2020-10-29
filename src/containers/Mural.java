@@ -1,19 +1,19 @@
 package containers;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class Mural implements Iterable<Draw> {
 	
-	private final Set<Draw> mural;
+	private final List<Draw> mural;
 	
 	/**
 	A Mural is a set of Draws
 	*/
 	public Mural() {
-		mural = new TreeSet<Draw>();
+		mural = new ArrayList<Draw>();
 	}
 	
 	/**
@@ -21,7 +21,7 @@ public class Mural implements Iterable<Draw> {
 	*/
 	public void add(final Draw i) {
 		try {
-			mural.add(i);
+			if (!mural.contains(i)) mural.add(i);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e);
 		}
@@ -63,11 +63,12 @@ public class Mural implements Iterable<Draw> {
 		StringBuilder resultat = new StringBuilder("Mural \n ------\n");
 		
 		for (Draw draw : this) {
-			resultat.append(draw +"\n");
+			resultat.append(draw.toString() +"\n");
 		}
 		
 		resultat.append("------");
 	
 		return resultat.toString();
 	}
+	
 }
