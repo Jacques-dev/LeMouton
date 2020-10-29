@@ -191,7 +191,12 @@ public class Line extends Shape {
 	*/
 	@Override
 	public String toString() {
-		return "Line f(x)= " + f.toString() + " [" + p1.toString() + "-" + p2.toString() + "]";
+		
+		StringBuilder resultat = new StringBuilder("\t\t\tLine\n");
+		
+		resultat.append("\t\t\t\tf(x) = " + f.toString() + "\tcoord : [" + p1.toString() + "; " + p2.toString() + "]\n");
+	
+		return resultat.toString();
 	}
 	
 	/**

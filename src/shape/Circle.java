@@ -92,7 +92,12 @@ public class Circle extends Shape {
 	@return a textual representation of a Circle
 	*/
 	public String toString() {
-		return "center: " + center + " " + "radius: " + radius;
+		
+		StringBuilder resultat = new StringBuilder("\t\t\tCircle\n");
+		
+		resultat.append("\t\t\t\tcenter : " + center + "\tradius : " + radius + "\n");
+	
+		return resultat.toString();
 	}
 	
 	/**

@@ -146,9 +146,9 @@ public class Polygon extends Shape {
 			}
 		}
 		
-		s.append("Polygon : \n");
+		s.append("\t\t\tPolygon\n");
 		for (Point p : pointList) {
-			s.append("\tPoint : " + p.toString() + "\n");
+			s.append("\t\t\t\tPoint : " + p.toString() + "\n");
 		}
 		
 		s.append("\n");

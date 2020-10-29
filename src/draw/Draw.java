@@ -84,13 +84,11 @@ public class Draw implements Iterable<Image> {
 	@Override
 	public String toString() {	
 		
-		StringBuilder resultat = new StringBuilder("Draw \n ------\n");
+		StringBuilder resultat = new StringBuilder("\tDraw\n");
 		
 		for (Image image : this) {
-			resultat.append(image +"\n");
+			resultat.append(image.toString() +"\n");
 		}
-		
-		resultat.append("------");
 	
 		return resultat.toString();
 	}

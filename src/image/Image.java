@@ -85,13 +85,11 @@ public class Image implements Iterable<Shape> {
 	public String toString() {
 		// return ("Image \n ------\n" + image.toString() + "\n------");		
 		
-		StringBuilder resultat = new StringBuilder("Image \n ------\n");
+		StringBuilder resultat = new StringBuilder("\t\tImage\n");
 		
 		for (Shape shape : this) {
-			resultat.append(shape +"\n");
+			resultat.append(shape.toString() +"\n");
 		}
-		
-		resultat.append("------");
 	
 		return resultat.toString();
 	}

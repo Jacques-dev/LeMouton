@@ -185,7 +185,12 @@ public class Ellipse extends Shape {
 	@return a textual representation of an Ellipse
 	*/
 	public String toString() {
-		return center.toString() + "p:" + petitAxe.toString() + "g:" + grandAxe.toString();
+		
+		StringBuilder resultat = new StringBuilder("\t\t\tEllipse\n");
+		
+		resultat.append("\t\t\t\tcenter : " + center + "\tGrand Axe : " + grandAxe + "\tPetit Axe : " + petitAxe + "\n");
+	
+		return resultat.toString();
 	}
     
 	/**
