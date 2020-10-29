@@ -22,9 +22,11 @@ public class Polygon extends Shape {
 		for (int i = 0; i < lines.size(); i++) {
 			centerX += lines.get(i).getP1().getX();	
 			centerY += lines.get(i).getP1().getY();
+			centerX += lines.get(i).getP2().getX();	
+			centerY += lines.get(i).getP2().getY();
 		}
-		centerX /= lines.size();
-		centerY /= lines.size();
+		centerX /= (2*lines.size());
+		centerY /= (2*lines.size());
 		this.center = new Point(centerX, centerY);
 	}
 	
