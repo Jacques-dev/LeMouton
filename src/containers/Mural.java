@@ -63,7 +63,7 @@ public class Mural implements Iterable<Draw> {
 		StringBuilder resultat = new StringBuilder("Mural \n ------\n");
 		
 		for (Draw draw : this) {
-			resultat.append(draw +"\n");
+			resultat.append("     " + draw +"\n");
 		}
 		
 		resultat.append("------");

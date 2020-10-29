@@ -11,4 +11,6 @@ public interface Container {
 	public Container rotation(int angle) throws EllipseCreationException, LineCreationException;
 	public Container centralSymmetry(Point p) throws EllipseCreationException, LineCreationException;
 	public Container axialSymmetry(Line l) throws EllipseCreationException, LineCreationException;
+	public double area();
+	public double perimeter();
 }

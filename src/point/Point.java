@@ -82,6 +82,29 @@ public class Point {
 	}
 	
 	/**
+	@param symetricPoint is the Point of symetry
+	@return a new Point after symmetry
+	*/
+	public Point symmetry(Point symetricPoint) {
+		return new Point(-(x - symetricPoint.getX()) + symetricPoint.getX(),-(y - symetricPoint.getY()) + symetricPoint.getY());
+	}
+	
+	/**
+	@param o is the Point of origin
+	@param angle is angle of rotation
+	@return a new Point after rotation
+	*/
+	public Point rotate(Point o, int angle) {
+		float xM, yM, x, y;
+		angle *= Math.PI / 180;
+	    xM = this.x - o.getX();
+	    yM = this.y - o.getY();
+	    x = (float) (xM * Math.cos(angle) + yM * Math.sin (angle) + o.getX());
+	    y = (float) (- xM * Math.sin (angle) + yM * Math.cos (angle) + o.getY());
+	    return new Point(x, y);
+	}
+	
+	/**
 	@return a textual representation of a Point
 	*/
 	@Override

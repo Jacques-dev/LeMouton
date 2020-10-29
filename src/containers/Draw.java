@@ -5,7 +5,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-public class Draw implements Iterable<Image> {
+import exceptions.EllipseCreationException;
+import exceptions.LineCreationException;
+import point.Point;
+import shape.Line;
+
+public class Draw implements Iterable<Image>, Container {
 	
 	private final List<Image> draw;
 	
@@ -85,7 +90,7 @@ public class Draw implements Iterable<Image> {
 		StringBuilder resultat = new StringBuilder("\tDraw\n");
 		
 		for (Image image : this) {
-			resultat.append(image.toString() +"\n");
+			resultat.append("     " + image.toString() +"\n");
 		}
 	
 		return resultat.toString();
@@ -101,5 +106,60 @@ public class Draw implements Iterable<Image> {
 			if (image.area() < limite) resultat +=1;
 		}
 		return resultat;
+	}
+
+	@Override
+	public Draw homothety(Point p, int ratio) throws EllipseCreationException, LineCreationException {
+		Draw d = new Draw();
+		
+		for (Image image : this) {
+			d.add((Image) image.homothety(p, ratio));
+		}
+		
+		return d;
+	}
+
+	@Override
+	public Draw translation(Point p) throws EllipseCreationException, LineCreationException {
+		Draw d = new Draw();
+		
+		for (Image image : this) {
+			d.add((Image) image.translation(p));
+		}
+		
+		return d;
+	}
+
+	@Override
+	public Draw rotation(int angle) throws EllipseCreationException, LineCreationException {
+		Draw d = new Draw();
+		
+		for (Image image : this) {
+			d.add((Image) image.rotation(angle));
+		}
+		
+		return d;
+	}
+
+	@Override
+	public Draw centralSymmetry(Point p) throws EllipseCreationException, LineCreationException {
+		Draw d = new Draw();
+		
+		for (Image image : this) {
+			d.add((Image) image.centralSymmetry(p));
+		}
+		
+		return d;
+	}
+
+	@Override
+	public Draw axialSymmetry(Line l) throws EllipseCreationException, LineCreationException {
+		Draw d = new Draw();
+		
+		for (Image image : this) {
+			d.add((Image) image.axialSymmetry(l));
+		}
+		
+		return d;
 	}
 }

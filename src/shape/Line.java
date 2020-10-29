@@ -5,6 +5,7 @@ import java.util.Objects;
 import containers.Shape;
 import exceptions.LineCreationException;
 import function.LinearFunction;
+import function.Vector;
 import point.Point;
 
 public class Line extends Shape {
@@ -57,7 +58,8 @@ public class Line extends Shape {
 	}
 	
 	/**
-	@param p is the new center Point of the Line after translation
+	@param origin is the origin Point of translation
+	@param destination is the new center Point of the Line after translation
 	@return a new Line after a translation
 	@throws LineCreationException 
 	*/
@@ -72,7 +74,7 @@ public class Line extends Shape {
 	}
 	
 	/**
-	@param p is the new center Point of the Line after translation
+	@param destination is the new center Point of the Line after translation
 	@return a new Line after a translation
 	@throws LineCreationException 
 	*/
@@ -89,31 +91,33 @@ public class Line extends Shape {
 	@Override
 	public Line rotation(int angle) throws LineCreationException {
 		Point center = this.centerOfLine();
-		Point newP1 = this.rotate(p1, center, angle);
-		Point newP2 = symmetry(p2, center);
+		Point newP1 = this.p1.rotate(center, angle);
+		Point newP2 = p2.symmetry(center);
 		
 		return new Line(newP1,newP2);
 	}
 	
 	/**
 	@param angle is the degree of rotation
+	@param p is the origin Point rotation
 	@return a new Line after a rotation
 	@throws LineCreationException 
 	*/
 	public Line rotationFromPoint(int angle, Point p) throws LineCreationException {
-		Point newP1 = this.rotate(p1, p, angle);
-		Point newP2 = symmetry(p2, p);
+		Point newP1 = this.p1.rotate(p, angle);
+		Point newP2 = p2.symmetry(p);
 		
 		return new Line(newP1,newP2);
 	}
 	
 	/**
+	@param p is the Point of symmetry
 	@return a new Line corresponding the its central symmetry
 	@throws LineCreationException 
 	*/
 	@Override
 	public Line centralSymmetry(Point p) throws LineCreationException {
-		return new Line(symmetry(p1, p), symmetry(p2, p));
+		return new Line(p1.symmetry(p), p2.symmetry(p));
 	}
 	
 	/**
@@ -123,18 +127,19 @@ public class Line extends Shape {
 	*/
 	@Override
 	public Line axialSymmetry(Line l) throws LineCreationException {
-		Point p1Onl = f.getNewPointOnTheLine(p1.getX(), p1.getY(), l.getP1());
-		Point p2Onl = f.getNewPointOnTheLine(p2.getX(), p2.getY(), l.getP2());
+		float a1 = f.getA();
+		float a2 = l.getF().getA();
 		
-		float p1X_Distance = p1.distanceX(p1Onl);
-		float p1Y_Distance = p1.distanceY(p1Onl);
-		float p2X_Distance = p2.distanceX(p2Onl);
-		float p2Y_Distance = p2.distanceY(p2Onl);
+		Vector vecteur_l = new Vector(l);
+		Vector vecteur_this = new Vector(this);
 		
-		Point newP1 = new Point(p1Onl.getX()+p1Y_Distance, p1Onl.getY()+p1X_Distance);
-		Point newP2 = new Point(p2Onl.getX()+p2Y_Distance, p2Onl.getY()+p2X_Distance);
 		
-		return new Line(newP1,newP2);
+		Point intersect_P1 = this.intersectionPoint(l);
+		float intersect_P1_x = intersect_P1.getX();
+		
+		
+		
+		return null;
 	}
 
 	/**

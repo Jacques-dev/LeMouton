@@ -94,7 +94,7 @@ public class Image implements Iterable<Shape>, Container {
 		StringBuilder resultat = new StringBuilder("\t\tImage\n");
 		
 		for (Shape shape : this) {
-			resultat.append(shape.toString() +"\n");
+			resultat.append("     " + shape.toString() +"\n");
 		}
 	
 		return resultat.toString();

@@ -71,7 +71,7 @@ public class Circle extends Shape {
 	*/
 	@Override
 	public Circle centralSymmetry(Point p) {
-		return new Circle(symmetry(center,  p), radius);
+		return new Circle(center.symmetry(p), radius);
 	}
 
 	/**

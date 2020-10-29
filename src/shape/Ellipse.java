@@ -36,18 +36,18 @@ public class Ellipse extends Shape {
 		    	}
 		    	
 		    	if (grandAxe.getP1().equals(center)) {
-		    		newPoint = symmetry(grandAxe.getP1(), center);
+		    		newPoint = grandAxe.getP1().symmetry(center);
 		    		this.grandAxe = new Line(grandAxe.getP2(), newPoint);
 		    	} else {
-		    		newPoint = symmetry(grandAxe.getP1(), center);
+		    		newPoint = grandAxe.getP1().symmetry(center);
 		    		this.grandAxe = new Line(grandAxe.getP1(), newPoint);
 		    	}
 		    	
 		    	if (petitAxe.getP1().equals(center)) {
-		    		newPoint = symmetry(petitAxe.getP1(), center);
+		    		newPoint = petitAxe.getP1().symmetry(center);
 		    		this.petitAxe = new Line(petitAxe.getP2(), newPoint);
 		    	} else {
-		    		newPoint = symmetry(petitAxe.getP1(), center);
+		    		newPoint = petitAxe.getP1().symmetry(center);
 		    		this.petitAxe = new Line(petitAxe.getP1(), newPoint);
 		    	}
     		} else {
