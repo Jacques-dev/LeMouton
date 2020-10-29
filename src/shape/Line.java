@@ -168,8 +168,6 @@ public class Line extends Shape {
 		LinearFunction f2 = l2.getF();
 		float a2 = f2.getA();
 		
-		System.out.println(a1);
-		System.out.println(a2);
 		if (a1 == a2) return false;
 		if (1 + (a1 * a2) == 0) return true;
 		return false;
@@ -192,7 +190,7 @@ public class Line extends Shape {
 	*/
 	@Override
 	public String toString() {
-		return "Line f(x)= " + f.toString() + " [" + p1.toString() + "-" + p2.toString() + "]";
+		return "Line f(x)= " + f.toString() + " [" + p1.toString() + p2.toString() + "]";
 	}
 	
 	/**

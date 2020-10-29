@@ -19,38 +19,42 @@ public class Ellipse extends Shape {
 	@throws EllipseCreationException 
 	@throws LineCreationException 
 	*/
-    public Ellipse(Point center, Line l1, Line l2) throws EllipseCreationException, LineCreationException{
-    	if (center.equals(l1.intersectionPoint(l2)) && l1.isOrthogonal(l2)) {
-	    	this.center = center;
-	    	
-	    	Point newPoint;
-	    	Line grandAxe, petitAxe;
-	    	
-	    	if (l1.perimeter() < l2.perimeter()) {
-	    		grandAxe = l2;
-	    		petitAxe = l1;
-	    	} else {
-	    		grandAxe = l1;
-	    		petitAxe = l2;
-	    	}
-	    	
-	    	if (grandAxe.getP1().equals(center)) {
-	    		newPoint = symmetry(grandAxe.getP1(), center);
-	    		this.grandAxe = new Line(grandAxe.getP2(), newPoint);
-	    	} else {
-	    		newPoint = symmetry(grandAxe.getP1(), center);
-	    		this.grandAxe = new Line(grandAxe.getP1(), newPoint);
-	    	}
-	    	
-	    	if (petitAxe.getP1().equals(center)) {
-	    		newPoint = symmetry(petitAxe.getP1(), center);
-	    		this.petitAxe = new Line(petitAxe.getP2(), newPoint);
-	    	} else {
-	    		newPoint = symmetry(petitAxe.getP1(), center);
-	    		this.petitAxe = new Line(petitAxe.getP1(), newPoint);
-	    	}
+    public Ellipse(Point center, Line l1, Line l2) throws EllipseCreationException, LineCreationException {
+    	if (center.equals(l1.intersectionPoint(l2))) {
+    		if (l1.isOrthogonal(l2)) {
+		    	this.center = center;
+		    	
+		    	Point newPoint;
+		    	Line grandAxe, petitAxe;
+		    	
+		    	if (l1.perimeter() < l2.perimeter()) {
+		    		grandAxe = l2;
+		    		petitAxe = l1;
+		    	} else {
+		    		grandAxe = l1;
+		    		petitAxe = l2;
+		    	}
+		    	
+		    	if (grandAxe.getP1().equals(center)) {
+		    		newPoint = symmetry(grandAxe.getP1(), center);
+		    		this.grandAxe = new Line(grandAxe.getP2(), newPoint);
+		    	} else {
+		    		newPoint = symmetry(grandAxe.getP1(), center);
+		    		this.grandAxe = new Line(grandAxe.getP1(), newPoint);
+		    	}
+		    	
+		    	if (petitAxe.getP1().equals(center)) {
+		    		newPoint = symmetry(petitAxe.getP1(), center);
+		    		this.petitAxe = new Line(petitAxe.getP2(), newPoint);
+		    	} else {
+		    		newPoint = symmetry(petitAxe.getP1(), center);
+		    		this.petitAxe = new Line(petitAxe.getP1(), newPoint);
+		    	}
+    		} else {
+    			throw new EllipseCreationException("'l1' and 'l2' have to be orthogonal");
+    		}
     	} else {
-    		throw new EllipseCreationException("[grandAxe] and [petitAxe] have to contains the same point as [center] and be orthogonal");
+    		throw new EllipseCreationException("'l1' and 'l2' have to contains a same point which has to be 'center'");
     	}
     }
     
@@ -102,27 +106,20 @@ public class Ellipse extends Shape {
     @throws LineCreationException 
 	*/
 	@Override
-	public Ellipse homothety(Point p, int ratio) throws EllipseCreationException, LineCreationException{
-		float x = (center.getX()-p.getX())*ratio;
-		float y = (center.getY()-p.getY())*ratio;
+	public Ellipse homothety(Point p, int ratio) throws EllipseCreationException, LineCreationException{;
 		
-		float l1p1x = (petitAxe.getP1().getX()-p.getX())*ratio;
-		float l1p1y = (petitAxe.getP1().getY()-p.getY())*ratio;
-		float l1p2x = (petitAxe.getP2().getX()-p.getX())*ratio;
-		float l1p2y = (petitAxe.getP2().getY()-p.getY())*ratio;
-		Point l1p1 = new Point(l1p1x,l1p1y);
-		Point l1p2 = new Point(l1p2x,l1p2y);
-		Line l1 = new Line(l1p1,l1p2);
+		Point l1p1 = new Point(grandAxe.getP1());
+		Point l1p2 = new Point(grandAxe.getP2());
+		Line l1 = new Line(l1p1,l1p2).homothety(p, ratio);
 		
-		float l2p1x = (petitAxe.getP1().getX()-p.getX())*ratio;
-		float l2p1y = (petitAxe.getP1().getY()-p.getY())*ratio;
-		float l2p2x = (petitAxe.getP2().getX()-p.getX())*ratio;
-		float l2p2y = (petitAxe.getP2().getY()-p.getY())*ratio;
-		Point l2p1 = new Point(l2p1x,l2p1y);
-		Point l2p2 = new Point(l2p2x,l2p2y);
-		Line l2 = new Line(l2p1,l2p2);
 		
-		return newEllipse(new Point(x+center.getX(),y+center.getY()), l1, l2);
+		Point l2p1 = new Point(petitAxe.getP1());
+		Point l2p2 = new Point(petitAxe.getP2());
+		Line l2 = new Line(l2p1,l2p2).homothety(p, ratio);
+		
+		Point newCenter = l1.intersectionPoint(l2);
+		
+		return newEllipse(newCenter, l1, l2);
 	}
 
 	/**
