@@ -1,8 +1,9 @@
-package shape;
+package containers;
 
 import point.Point;
+import shape.ShapesMethodes;
 
-public abstract class Shape implements ShapesMethodes {
+public abstract class Shape implements ShapesMethodes, Container {
 	
 	/**
 	@param p is the original Point

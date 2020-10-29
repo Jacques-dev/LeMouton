@@ -2,15 +2,15 @@ package Test;
 
 import java.util.ArrayList;
 
+import containers.Image;
+import containers.Shape;
 import exceptions.EllipseCreationException;
 import exceptions.LineCreationException;
-import image.Image;
 import point.Point;
 import shape.Circle;
 import shape.Ellipse;
 import shape.Line;
 import shape.Polygon;
-import shape.Shape;
 import shape.ShapesMethodes;
 
 public class Main {
@@ -67,11 +67,11 @@ public class Main {
 		
 		i1.perimeter();
 		i1.area();
-		((ShapesMethodes) i1).homothety(p2, 10);
-		((ShapesMethodes) i1).translation(p2);
-		((ShapesMethodes) i1).rotation(35);
-		((ShapesMethodes) i1).centralSymmetry(p4);
-		((ShapesMethodes) i1).axialSymmetry(l2);
+		i1.homothety(p2, 10);
+		i1.translation(p2);
+		i1.rotation(35);
+		i1.centralSymmetry(p4);
+		i1.axialSymmetry(l2);
 		
 		/*
 		ArrayList<Line> list = new ArrayList<Line>();

@@ -1,21 +1,19 @@
-package draw;
+package containers;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
-
-import image.Image;
 
 public class Draw implements Iterable<Image> {
 	
-	private final Set<Image> draw;
+	private final List<Image> draw;
 	
 	/**
 	A Draw is a set of Images
 	*/
 	public Draw() {
-		draw = new TreeSet<Image>();
+		draw = new ArrayList<Image>();
 	}
 	
 	/**
@@ -23,7 +21,7 @@ public class Draw implements Iterable<Image> {
 	*/
 	public void add(final Image i) {
 		try {
-			draw.add(i);
+			if (!draw.contains(i)) draw.add(i);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e);
 		}

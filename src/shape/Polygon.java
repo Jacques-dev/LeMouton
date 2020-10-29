@@ -2,6 +2,8 @@ package shape;
 
 import java.util.ArrayList;
 import java.util.Objects;
+
+import containers.Shape;
 import exceptions.LineCreationException;
 import point.Point;
 

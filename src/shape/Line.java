@@ -2,6 +2,7 @@ package shape;
 
 import java.util.Objects;
 
+import containers.Shape;
 import exceptions.LineCreationException;
 import function.LinearFunction;
 import point.Point;
@@ -167,8 +168,6 @@ public class Line extends Shape {
 		LinearFunction f2 = l2.getF();
 		float a2 = f2.getA();
 		
-		System.out.println(a1);
-		System.out.println(a2);
 		if (a1 == a2) return false;
 		if (1 + (a1 * a2) == 0) return true;
 		return false;
