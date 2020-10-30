@@ -56,8 +56,8 @@ public class Main {
 		i2.add(e1);
 		i2.add(poly1);
 		
-		System.out.println(i2.perimeter());
-		System.out.println(i2.area());
+		i2.perimeter();
+		i2.area();
 		i2=i2.homothety(p2, 10);
 		i2=i2.translation(p2);
 		i2=i2.rotation(45);
@@ -72,8 +72,8 @@ public class Main {
 		d2.add(i1);
 		d2.add(i2);
 		
-		System.out.println(d2.perimeter());
-		System.out.println(d2.area());
+		d2.perimeter();
+		d2.area();
 		d2=d2.homothety(p2, 10);
 		d2=d2.translation(p2);
 		d2=d2.rotation(45);
