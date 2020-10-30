@@ -3,7 +3,6 @@ package shape;
 import java.util.Objects;
 
 import containers.Shape;
-import exceptions.LineCreationException;
 import point.Point;
 
 public class Circle extends Shape {
