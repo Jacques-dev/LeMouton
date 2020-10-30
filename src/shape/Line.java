@@ -17,7 +17,7 @@ public class Line extends Shape {
 	/**
 	@param p1 is one of the point belonging to the line
 	@param p2 is one of the point belonging to the line
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	public Line(Point p1, Point p2) throws LineCreationException {
 		this.p1 = p1;
@@ -45,7 +45,7 @@ public class Line extends Shape {
 	@param origine is the homothety origin
 	@param ratio is the homothety ratio
 	@return a new Line after a homothety
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Line homothety(Point origine, int ratio) throws LineCreationException {
@@ -61,7 +61,7 @@ public class Line extends Shape {
 	@param origin is the origin Point of translation
 	@param destination is the new center Point of the Line after translation
 	@return a new Line after a translation
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	public Line translation(Point origin, Point destination) throws LineCreationException {
 		float center_x = origin.distanceX(p1);
@@ -76,7 +76,7 @@ public class Line extends Shape {
 	/**
 	@param destination is the new center Point of the Line after translation
 	@return a new Line after a translation
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Line translation(Point destination) throws LineCreationException {
@@ -86,7 +86,7 @@ public class Line extends Shape {
 	/**
 	@param angle is the degree of rotation
 	@return a new Line after a rotation
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Line rotation(int angle) throws LineCreationException {
@@ -101,7 +101,7 @@ public class Line extends Shape {
 	@param angle is the degree of rotation
 	@param p is the origin Point rotation
 	@return a new Line after a rotation
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	public Line rotationFromPoint(int angle, Point p) throws LineCreationException {
 		Point center = this.centerOfLine();
@@ -114,7 +114,7 @@ public class Line extends Shape {
 	/**
 	@param p is the Point of symmetry
 	@return a new Line corresponding the its central symmetry
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Line centralSymmetry(Point p) throws LineCreationException {
@@ -124,7 +124,7 @@ public class Line extends Shape {
 	/**
 	@param l is the Line of symmetry
 	@return a new Line corresponding the its axial symmetry
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given check if no Null argument are given
 	*/
 	@Override
 	public Line axialSymmetry(Line l) throws LineCreationException {
@@ -236,5 +236,14 @@ public class Line extends Shape {
 	*/
 	public LinearFunction getF() {
 		return f;
+	}
+	
+	/** 
+	@return a copy of Line
+	@throws LineCreationException check if no Null argument are given
+	*/
+	@Override
+	public Line copy() throws LineCreationException {
+		return new Line(this.p1, this.p2);
 	}
 }

@@ -55,7 +55,7 @@ public class Polygon extends Shape {
 	@param origine is the homothety origin
 	@param ratio is the homothety ratio
 	@return a new Polygon after a homothety
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Polygon homothety(Point p, int ratio) throws LineCreationException {
@@ -69,7 +69,7 @@ public class Polygon extends Shape {
 	/**
 	@param p is the new center Point of the Polygon after translation
 	@return a new Polygon after a translation
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Polygon translation(Point p) throws LineCreationException {
@@ -83,7 +83,7 @@ public class Polygon extends Shape {
 	/**
 	@param angle is the degree of rotation
 	@return a new Polygon after a rotation
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Polygon rotation(int angle) throws LineCreationException {
@@ -96,7 +96,7 @@ public class Polygon extends Shape {
 
 	/**
 	@return a new Polygon corresponding the its central symmetry
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Polygon centralSymmetry(Point p) throws LineCreationException {
@@ -110,7 +110,7 @@ public class Polygon extends Shape {
 	/**
 	@param l is the Line of symmetry
 	@return a new Polygon corresponding the its axial symmetry
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Polygon axialSymmetry(Line l) throws LineCreationException {
@@ -176,5 +176,13 @@ public class Polygon extends Shape {
 	@Override
 	public int hashCode() {
 		return Objects.hash(lines,center);
+	}
+	
+	/** 
+	@return a copy of Polygon
+	*/
+	@Override
+	public Polygon copy() {
+		return new Polygon(this.lines);
 	}
 }

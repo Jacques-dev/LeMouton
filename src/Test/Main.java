@@ -17,8 +17,6 @@ public class Main {
 
 	public static void main(String[] args) throws LineCreationException, EllipseCreationException{
 		
-		
-		
 		Point p0 = new Point(-4,6);
 		Point p1 = new Point(2,0);
 		Point p2 = new Point(-2,2);

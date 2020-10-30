@@ -16,8 +16,8 @@ public class Ellipse extends Shape {
 	@param center is the center Point of the Ellipse
 	@param l1 is one of the lines belonging in the Ellipse from center
 	@param l2 is one of the lines belonging in the Ellipse from center
-	@throws EllipseCreationException 
-	@throws LineCreationException 
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle 
+	@throws LineCreationException check if no Null argument are given 
 	*/
     public Ellipse(Point center, Line l1, Line l2) throws EllipseCreationException, LineCreationException {
     	if (l1.perimeter() == l2.perimeter()) {
@@ -67,8 +67,8 @@ public class Ellipse extends Shape {
 	@param center is the center Point of the Ellipse
 	@param grandAxe is the longest line belonging in the Ellipse
 	@param petitAxe is the smallest line belonging in the Ellipse
-	@throws EllipseCreationException 
-    @throws LineCreationException 
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle 
+    @throws LineCreationException check if no Null argument are given 
 	*/
     public Ellipse newEllipse(Point center, Line grandAxe, Line petitAxe) throws EllipseCreationException, LineCreationException{
     	Line newGrandAxe = new Line(grandAxe.getP1(), grandAxe.centerOfLine());
@@ -107,8 +107,8 @@ public class Ellipse extends Shape {
 	@param origine is the homothety origin
 	@param ratio is the homothety ratio
 	@return a new Ellipse after a homothety
-    @throws EllipseCreationException 
-    @throws LineCreationException 
+    @throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle 
+    @throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Ellipse homothety(Point p, int ratio) throws EllipseCreationException, LineCreationException{;
@@ -130,8 +130,8 @@ public class Ellipse extends Shape {
 	/**
 	@param p is the new center Point of the Ellipse after translation
 	@return a new Ellipse after a translation
-	@throws EllipseCreationException 
-	@throws LineCreationException 
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Ellipse translation(Point p) throws EllipseCreationException, LineCreationException{
@@ -141,8 +141,8 @@ public class Ellipse extends Shape {
 	/**
 	@param angle is the degree of rotation
 	@return a new Ellipse after a rotation
-	@throws EllipseCreationException 
-	@throws LineCreationException 
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Ellipse rotation(int angle) throws EllipseCreationException, LineCreationException{
@@ -155,8 +155,8 @@ public class Ellipse extends Shape {
 
 	/**
 	@return a new Ellipse corresponding the its central symmetry
-	@throws EllipseCreationException 
-	@throws LineCreationException 
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Ellipse centralSymmetry(Point p) throws EllipseCreationException, LineCreationException{
@@ -171,8 +171,8 @@ public class Ellipse extends Shape {
 	/**
 	@param l is the Line of symmetry
 	@return a new Ellipse corresponding the its axial symmetry
-	@throws EllipseCreationException 
-	@throws LineCreationException 
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	@Override
 	public Ellipse axialSymmetry(Line l) throws EllipseCreationException, LineCreationException{
@@ -213,6 +213,16 @@ public class Ellipse extends Shape {
 	@Override
 	public int hashCode() {
 		return Objects.hash(center,grandAxe,petitAxe);
+	}
+	
+	/** 
+	@return a copy of Ellipse
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws LineCreationException check if no Null argument are given
+	*/
+	@Override
+	public Ellipse copy() throws EllipseCreationException, LineCreationException{
+		return new Ellipse(this.center, this.grandAxe, this.petitAxe);
 	}
 
 }

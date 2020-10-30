@@ -9,7 +9,7 @@ public class LinearFunction { // y = ax + b
 	/**
 	@param p1 is a Points which will define the linear function of a Line
 	@param p2 is a Points which will define the linear function of a Line
-	@throws LineCreationException 
+	@throws LineCreationException check if no Null argument are given 
 	*/
 	public LinearFunction(Point p1, Point p2) throws LineCreationException {
 		if (p1 == null || p2 == null) throw new LineCreationException();

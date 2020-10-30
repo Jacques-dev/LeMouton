@@ -2,7 +2,6 @@ package containers;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Objects;
 
 import exceptions.EllipseCreationException;
@@ -12,13 +11,20 @@ import shape.Line;
 
 public class Draw implements Iterable<Image>, Container {
 	
-	private final List<Image> draw;
+	private final ArrayList<Image> draw;
 	
 	/**
-	A Draw is a set of Images
+	A Draw is an ArrayList of Images
 	*/
 	public Draw() {
 		draw = new ArrayList<Image>();
+	}
+	
+	/**
+	A Draw is an ArrayList of Images
+	*/
+	private Draw(ArrayList<Image> a) {
+		this.draw = a;
 	}
 	
 	/**
@@ -161,5 +167,13 @@ public class Draw implements Iterable<Image>, Container {
 		}
 		
 		return d;
+	}
+	
+	/** 
+	@return a copy of Draw
+	*/
+	@Override
+	public Draw copy() {
+		return new Draw(draw);
 	}
 }

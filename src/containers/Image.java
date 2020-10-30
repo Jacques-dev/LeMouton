@@ -11,19 +11,25 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.List;
 
 public class Image implements Iterable<Shape>, Container {
 	
-	private final List<Shape> image;
+	private final ArrayList<Shape> image;
 	
 	/**
-	An Image is a set of Shapes
+	An Image is an ArrayList of Shapes
 	*/
 	public Image() {
 		image = new ArrayList<Shape>();
 	}
 	
+	/**
+	An Image is an ArrayList of Shapes
+	*/
+	private Image(ArrayList<Shape> a) {
+		this.image = a;
+	}
+
 	/**
 	@param s is a Shape
 	*/
@@ -134,6 +140,13 @@ public class Image implements Iterable<Shape>, Container {
 		return resultat;
 	}
 
+	/**
+	@param p is the homothety origin Point
+	@param ratio is the homothety ratio
+	@return a new Image after a homothety
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws LineCreationException check if no Null argument are given
+	*/
 	@Override
 	public Image homothety(Point p, int ratio) throws EllipseCreationException, LineCreationException {
 		Image i = new Image();
@@ -145,6 +158,12 @@ public class Image implements Iterable<Shape>, Container {
 		return i;
 	}
 
+	/**
+	@param p is the origin Point of translation
+	@return a new Image after a translation
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws LineCreationException check if no Null argument are given 
+	*/
 	@Override
 	public Image translation(Point p) throws EllipseCreationException, LineCreationException {
 		Image i = new Image();
@@ -156,6 +175,12 @@ public class Image implements Iterable<Shape>, Container {
 		return i;
 	}
 
+	/**
+	@param angle is the degree of rotation
+	@return a new Image after a rotation
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws LineCreationException check if no Null argument are given 
+	*/
 	@Override
 	public Image rotation(int angle) throws EllipseCreationException, LineCreationException {
 		Image i = new Image();
@@ -167,6 +192,12 @@ public class Image implements Iterable<Shape>, Container {
 		return i;
 	}
 
+	/**
+	@param p is the Point of symmetry
+	@return a new Image corresponding the its central symmetry
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws LineCreationException check if no Null argument are given 
+	*/
 	@Override
 	public Image centralSymmetry(Point p) throws EllipseCreationException, LineCreationException {
 		Image i = new Image();
@@ -178,6 +209,12 @@ public class Image implements Iterable<Shape>, Container {
 		return i;
 	}
 
+	/**
+	@param l is the Line of symmetry
+	@return a new Image corresponding the its axial symmetry
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws LineCreationException check if no Null argument are given 
+	*/
 	@Override
 	public Image axialSymmetry(Line l) throws EllipseCreationException, LineCreationException {
 		Image i = new Image();
@@ -189,5 +226,11 @@ public class Image implements Iterable<Shape>, Container {
 		return i;
 	}
 
-	
+	/** 
+	@return a copy of Draw
+	*/
+	@Override
+	public Image copy() {
+		return new Image(image);
+	}
 }

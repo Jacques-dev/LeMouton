@@ -2,12 +2,11 @@ package containers;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Objects;
 
 public class Mural implements Iterable<Draw> {
 	
-	private final List<Draw> mural;
+	private final ArrayList<Draw> mural;
 	
 	/**
 	A Mural is a set of Draws
@@ -16,6 +15,13 @@ public class Mural implements Iterable<Draw> {
 		mural = new ArrayList<Draw>();
 	}
 	
+	/**
+	A Mural is a set of Draws
+	*/
+	private Mural(ArrayList<Draw> a) {
+		this.mural = a;
+	}
+
 	/**
 	@param i is an Draw containing Images
 	*/
@@ -71,4 +77,10 @@ public class Mural implements Iterable<Draw> {
 		return resultat.toString();
 	}
 	
+	/** 
+	@return a copy of Mural
+	*/
+	public Mural copy() {
+		return new Mural(mural);
+	}
 }

@@ -3,6 +3,7 @@ package shape;
 import java.util.Objects;
 
 import containers.Shape;
+import exceptions.LineCreationException;
 import point.Point;
 
 public class Circle extends Shape {
@@ -118,5 +119,13 @@ public class Circle extends Shape {
 	@Override
 	public int hashCode() {
 		return Objects.hash(center,radius,pi);
+	}
+	
+	/** 
+	@return a copy of Circle
+	*/
+	@Override
+	public Circle copy() {
+		return new Circle(this.center, this.radius);
 	}
 }

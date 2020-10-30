@@ -13,4 +13,5 @@ public interface Container {
 	public Container axialSymmetry(Line l) throws EllipseCreationException, LineCreationException;
 	public double area();
 	public double perimeter();
+	public Container copy() throws EllipseCreationException, LineCreationException;
 }
