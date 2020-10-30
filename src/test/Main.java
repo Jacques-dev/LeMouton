@@ -1,4 +1,4 @@
-package test;
+package Test;
 
 import java.util.ArrayList;
 
@@ -16,6 +16,8 @@ import shape.Polygon;
 public class Main {
 
 	public static void main(String[] args) throws LineCreationException, EllipseCreationException{
+		
+		
 		
 		Point p0 = new Point(-4,6);
 		Point p1 = new Point(2,0);
@@ -56,8 +58,8 @@ public class Main {
 		i2.add(e1);
 		i2.add(poly1);
 		
-		i2.perimeter();
-		i2.area();
+		System.out.println("Img 1 Perimeter : " + i2.perimeter());
+		System.out.println("Img 1 Area : " + i2.area());
 		i2=i2.homothety(p2, 10);
 		i2=i2.translation(p2);
 		i2=i2.rotation(45);
@@ -72,8 +74,8 @@ public class Main {
 		d2.add(i1);
 		d2.add(i2);
 		
-		d2.perimeter();
-		d2.area();
+		System.out.println("Draw 2 Perimeter : " + d2.perimeter());
+		System.out.println("Draw 2 : Area : " + d2.area());
 		d2=d2.homothety(p2, 10);
 		d2=d2.translation(p2);
 		d2=d2.rotation(45);

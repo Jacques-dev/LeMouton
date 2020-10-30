@@ -35,8 +35,11 @@ public class Polygon extends Shape {
 	*/
 	@Override
 	public double area() {
-		// TODO Auto-generated method stub
-		return 0;
+		double somme = 0;
+		for (int i = 0; i < this.lines.size(); i++) {
+			somme =+ this.lines.get(i).getP1().getX() * this.lines.get(i).getP2().getY() - this.lines.get(i).getP1().getY() * this.lines.get(i).getP2().getX();
+		}
+		return somme;
 	}
 
 	/**

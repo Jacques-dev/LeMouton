@@ -95,7 +95,6 @@ public class Image implements Iterable<Shape>, Container {
 	*/
 	@Override
 	public String toString() {
-		// return ("Image \n ------\n" + image.toString() + "\n------");		
 		
 		StringBuilder resultat = new StringBuilder("\t\tImage\n");
 		
