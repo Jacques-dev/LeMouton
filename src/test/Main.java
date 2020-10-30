@@ -1,4 +1,4 @@
-package Test;
+package test;
 
 import java.util.ArrayList;
 
@@ -75,7 +75,7 @@ public class Main {
 		d2.add(i2);
 		
 		System.out.println("Draw 2 Perimeter : " + d2.perimeter());
-		System.out.println("Draw 2 : Area : " + d2.area());
+		System.out.println("Draw 2 Area : " + d2.area());
 		d2=d2.homothety(p2, 10);
 		d2=d2.translation(p2);
 		d2=d2.rotation(45);
