@@ -67,6 +67,7 @@ public class Ellipse extends Shape {
 	@param center is the center Point of the Ellipse
 	@param grandAxe is the longest line belonging in the Ellipse
 	@param petitAxe is the smallest line belonging in the Ellipse
+	@return a new Ellipse
 	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle 
     @throws LineCreationException check if no Null argument are given 
 	*/
@@ -104,7 +105,7 @@ public class Ellipse extends Shape {
     }
 
     /**
-	@param origine is the homothety origin
+	@param p is the homothety origin
 	@param ratio is the homothety ratio
 	@return a new Ellipse after a homothety
     @throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle 

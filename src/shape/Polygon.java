@@ -55,7 +55,7 @@ public class Polygon extends Shape {
 	}
 	
 	/**
-	@param origine is the homothety origin
+	@param p is the homothety origin
 	@param ratio is the homothety ratio
 	@return a new Polygon after a homothety
 	@throws LineCreationException check if no Null argument are given 

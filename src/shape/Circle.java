@@ -37,7 +37,7 @@ public class Circle extends Shape {
 	}
 
 	/**
-	@param origine is the homothety origin
+	@param p is the homothety origin
 	@param ratio is the homothety ratio
 	@return a new Circle after a homothety
 	*/
