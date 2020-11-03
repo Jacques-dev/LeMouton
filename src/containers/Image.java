@@ -145,7 +145,7 @@ public class Image implements Iterable<Shape>, Container {
 	@param p is the homothety origin Point
 	@param ratio is the homothety ratio
 	@return a new Image after a homothety
-	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle
 	@throws LineCreationException check if no Null argument are given
 	@throws PolygonCreationException check more than 2 arguments are given
 	*/
@@ -163,8 +163,7 @@ public class Image implements Iterable<Shape>, Container {
 	/**
 	@param p is the origin Point of translation
 	@return a new Image after a translation
-	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
-	@throws LineCreationException check if no Null argument are given 
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle
 	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
@@ -181,8 +180,7 @@ public class Image implements Iterable<Shape>, Container {
 	/**
 	@param angle is the degree of rotation
 	@return a new Image after a rotation
-	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
-	@throws LineCreationException check if no Null argument are given 
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle
 	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
@@ -199,8 +197,7 @@ public class Image implements Iterable<Shape>, Container {
 	/**
 	@param p is the Point of symmetry
 	@return a new Image corresponding the its central symmetry
-	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
-	@throws LineCreationException check if no Null argument are given 
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle
 	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
@@ -217,7 +214,7 @@ public class Image implements Iterable<Shape>, Container {
 	/**
 	@param l is the Line of symmetry
 	@return a new Image corresponding the its axial symmetry
-	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle
 	@throws LineCreationException check if no Null argument are given 
 	@throws PolygonCreationException check more than 2 arguments are given
 	*/

@@ -115,6 +115,14 @@ public class Draw implements Iterable<Image>, Container {
 		return resultat;
 	}
 
+	/**
+	@param p is the homothety origin Point
+	@param ratio is the homothety ratio
+	@return a new Draw after a homothety
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws LineCreationException check if no Null argument are given
+	@throws PolygonCreationException check more than 2 arguments are given
+	*/
 	@Override
 	public Draw homothety(Point p, int ratio) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Draw d = new Draw();
@@ -126,6 +134,12 @@ public class Draw implements Iterable<Image>, Container {
 		return d;
 	}
 
+	/**
+	@param p is the origin Point of translation
+	@return a new Draw after a translation
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws PolygonCreationException check more than 2 arguments are given
+	*/
 	@Override
 	public Draw translation(Point p) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Draw d = new Draw();
@@ -137,6 +151,12 @@ public class Draw implements Iterable<Image>, Container {
 		return d;
 	}
 
+	/**
+	@param angle is the degree of rotation
+	@return a new Draw after a rotation
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws PolygonCreationException check more than 2 arguments are given
+	*/
 	@Override
 	public Draw rotation(int angle) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Draw d = new Draw();
@@ -148,6 +168,12 @@ public class Draw implements Iterable<Image>, Container {
 		return d;
 	}
 
+	/**
+	@param p is the Point of symmetry
+	@return a new Draw corresponding the its central symmetry
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws PolygonCreationException check more than 2 arguments are given
+	*/
 	@Override
 	public Draw centralSymmetry(Point p) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Draw d = new Draw();
@@ -159,6 +185,13 @@ public class Draw implements Iterable<Image>, Container {
 		return d;
 	}
 
+	/**
+	@param l is the Line of symmetry
+	@return a new Draw corresponding the its axial symmetry
+	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle
+	@throws LineCreationException check if no Null argument are given 
+	@throws PolygonCreationException check more than 2 arguments are given
+	*/
 	@Override
 	public Draw axialSymmetry(Line l) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Draw d = new Draw();
