@@ -7,6 +7,7 @@ import containers.Image;
 import containers.Mural;
 import exceptions.EllipseCreationException;
 import exceptions.LineCreationException;
+import exceptions.PolygonCreationException;
 import point.Point;
 import shape.Circle;
 import shape.Ellipse;
@@ -15,7 +16,7 @@ import shape.Polygon;
 
 public class Main {
 
-	public static void main(String[] args) throws LineCreationException, EllipseCreationException{
+	public static void main(String[] args) throws LineCreationException, EllipseCreationException, PolygonCreationException{
 		
 		
 		

@@ -1,4 +1,6 @@
-package containers;
+package shape;
+
+import containers.Container;
 
 public abstract class Shape implements Container {
 	/**

@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import exceptions.EllipseCreationException;
 import exceptions.LineCreationException;
+import exceptions.PolygonCreationException;
 import point.Point;
 import shape.Line;
 
@@ -115,7 +116,7 @@ public class Draw implements Iterable<Image>, Container {
 	}
 
 	@Override
-	public Draw homothety(Point p, int ratio) throws EllipseCreationException, LineCreationException {
+	public Draw homothety(Point p, int ratio) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Draw d = new Draw();
 		
 		for (Image image : this) {
@@ -126,7 +127,7 @@ public class Draw implements Iterable<Image>, Container {
 	}
 
 	@Override
-	public Draw translation(Point p) throws EllipseCreationException, LineCreationException {
+	public Draw translation(Point p) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Draw d = new Draw();
 		
 		for (Image image : this) {
@@ -137,7 +138,7 @@ public class Draw implements Iterable<Image>, Container {
 	}
 
 	@Override
-	public Draw rotation(int angle) throws EllipseCreationException, LineCreationException {
+	public Draw rotation(int angle) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Draw d = new Draw();
 		
 		for (Image image : this) {
@@ -148,7 +149,7 @@ public class Draw implements Iterable<Image>, Container {
 	}
 
 	@Override
-	public Draw centralSymmetry(Point p) throws EllipseCreationException, LineCreationException {
+	public Draw centralSymmetry(Point p) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Draw d = new Draw();
 		
 		for (Image image : this) {
@@ -159,7 +160,7 @@ public class Draw implements Iterable<Image>, Container {
 	}
 
 	@Override
-	public Draw axialSymmetry(Line l) throws EllipseCreationException, LineCreationException {
+	public Draw axialSymmetry(Line l) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Draw d = new Draw();
 		
 		for (Image image : this) {

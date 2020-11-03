@@ -2,7 +2,6 @@ package shape;
 
 import java.util.Objects;
 
-import containers.Shape;
 import point.Point;
 
 public class Circle extends Shape {

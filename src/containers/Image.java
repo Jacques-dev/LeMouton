@@ -4,8 +4,10 @@ import java.util.Objects;
 
 import exceptions.EllipseCreationException;
 import exceptions.LineCreationException;
+import exceptions.PolygonCreationException;
 import point.Point;
 import shape.Line;
+import shape.Shape;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -145,9 +147,10 @@ public class Image implements Iterable<Shape>, Container {
 	@return a new Image after a homothety
 	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
 	@throws LineCreationException check if no Null argument are given
+	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
-	public Image homothety(Point p, int ratio) throws EllipseCreationException, LineCreationException {
+	public Image homothety(Point p, int ratio) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Image i = new Image();
 		
 		for (Shape shape : this) {
@@ -162,9 +165,10 @@ public class Image implements Iterable<Shape>, Container {
 	@return a new Image after a translation
 	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
 	@throws LineCreationException check if no Null argument are given 
+	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
-	public Image translation(Point p) throws EllipseCreationException, LineCreationException {
+	public Image translation(Point p) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Image i = new Image();
 		
 		for (Shape shape : this) {
@@ -179,9 +183,10 @@ public class Image implements Iterable<Shape>, Container {
 	@return a new Image after a rotation
 	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
 	@throws LineCreationException check if no Null argument are given 
+	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
-	public Image rotation(int angle) throws EllipseCreationException, LineCreationException {
+	public Image rotation(int angle) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Image i = new Image();
 		
 		for (Shape shape : this) {
@@ -196,9 +201,10 @@ public class Image implements Iterable<Shape>, Container {
 	@return a new Image corresponding the its central symmetry
 	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
 	@throws LineCreationException check if no Null argument are given 
+	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
-	public Image centralSymmetry(Point p) throws EllipseCreationException, LineCreationException {
+	public Image centralSymmetry(Point p) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Image i = new Image();
 		
 		for (Shape shape : this) {
@@ -213,9 +219,10 @@ public class Image implements Iterable<Shape>, Container {
 	@return a new Image corresponding the its axial symmetry
 	@throws EllipseCreationException check for orthogonality, if lines cross the center point, and if it's not a circle check for orthogonality, if lines cross the center point, and if it's not a circle
 	@throws LineCreationException check if no Null argument are given 
+	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
-	public Image axialSymmetry(Line l) throws EllipseCreationException, LineCreationException {
+	public Image axialSymmetry(Line l) throws EllipseCreationException, LineCreationException, PolygonCreationException {
 		Image i = new Image();
 		
 		for (Shape shape : this) {

@@ -2,7 +2,6 @@ package shape;
 
 import java.util.Objects;
 
-import containers.Shape;
 import exceptions.LineCreationException;
 import function.LinearFunction;
 import function.Vector;
@@ -206,7 +205,7 @@ public class Line extends Shape {
 	public boolean equals(Object o) {
 		if (!(o instanceof Line)) {return false;}
 		Line x = (Line) o;
-		return p1.equals(x.p1) && p2.equals(x.p2);
+		return p1.equals(x.p1) && p2.equals(x.p2) && f.equals(x.f) && width == x.width;
 	}
 	
 	/**
@@ -214,7 +213,7 @@ public class Line extends Shape {
 	*/
 	@Override
 	public int hashCode() {
-		return Objects.hash(p1,p2);
+		return Objects.hash(p1,p2,f,width);
 	}
 
 	/**

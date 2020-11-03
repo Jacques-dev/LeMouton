@@ -3,8 +3,8 @@ package shape;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import containers.Shape;
 import exceptions.LineCreationException;
+import exceptions.PolygonCreationException;
 import point.Point;
 
 
@@ -16,7 +16,10 @@ public class Polygon extends Shape {
 	/**
 	@param lines is a list of the lines belonging to the Polygon
 	*/
-	public Polygon(ArrayList<Line> lines) {
+	public Polygon(ArrayList<Line> lines) throws PolygonCreationException {
+		if (lines.size() < 3) {
+			throw new PolygonCreationException("Less than 3 Lines are specified in arguments.");
+		}
 		this.lines = lines;
 		float centerX = 0, centerY = 0;
 		for (int i = 0; i < lines.size(); i++) {
@@ -59,9 +62,10 @@ public class Polygon extends Shape {
 	@param ratio is the homothety ratio
 	@return a new Polygon after a homothety
 	@throws LineCreationException check if no Null argument are given 
+	 * @throws PolygonCreationException 
 	*/
 	@Override
-	public Polygon homothety(Point p, int ratio) throws LineCreationException {
+	public Polygon homothety(Point p, int ratio) throws LineCreationException, PolygonCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).homothety(p, ratio));
@@ -73,9 +77,10 @@ public class Polygon extends Shape {
 	@param p is the new center Point of the Polygon after translation
 	@return a new Polygon after a translation
 	@throws LineCreationException check if no Null argument are given 
+	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
-	public Polygon translation(Point p) throws LineCreationException {
+	public Polygon translation(Point p) throws LineCreationException, PolygonCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).translation(center,p));
@@ -87,9 +92,10 @@ public class Polygon extends Shape {
 	@param angle is the degree of rotation
 	@return a new Polygon after a rotation
 	@throws LineCreationException check if no Null argument are given 
+	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
-	public Polygon rotation(int angle) throws LineCreationException {
+	public Polygon rotation(int angle) throws LineCreationException, PolygonCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).rotationFromPoint(angle,center));
@@ -100,9 +106,10 @@ public class Polygon extends Shape {
 	/**
 	@return a new Polygon corresponding the its central symmetry
 	@throws LineCreationException check if no Null argument are given 
+	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
-	public Polygon centralSymmetry(Point p) throws LineCreationException {
+	public Polygon centralSymmetry(Point p) throws LineCreationException, PolygonCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).centralSymmetry(p));
@@ -114,9 +121,10 @@ public class Polygon extends Shape {
 	@param l is the Line of symmetry
 	@return a new Polygon corresponding the its axial symmetry
 	@throws LineCreationException check if no Null argument are given 
+	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
-	public Polygon axialSymmetry(Line l) throws LineCreationException {
+	public Polygon axialSymmetry(Line l) throws LineCreationException, PolygonCreationException {
 		ArrayList<Line> tmpLines = new ArrayList<Line>();
 		for (int i = 0; i < this.lines.size(); i++) {
 			tmpLines.add(this.lines.get(i).axialSymmetry(l));
@@ -183,9 +191,10 @@ public class Polygon extends Shape {
 	
 	/** 
 	@return a copy of Polygon
+	@throws PolygonCreationException check more than 2 arguments are given
 	*/
 	@Override
-	public Polygon copy() {
+	public Polygon copy() throws PolygonCreationException {
 		return new Polygon(this.lines);
 	}
 }

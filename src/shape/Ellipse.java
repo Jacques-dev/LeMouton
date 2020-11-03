@@ -2,7 +2,6 @@ package shape;
 
 import java.util.Objects;
 
-import containers.Shape;
 import exceptions.EllipseCreationException;
 import exceptions.LineCreationException;
 import point.Point;
@@ -21,7 +20,7 @@ public class Ellipse extends Shape {
 	*/
     public Ellipse(Point center, Line l1, Line l2) throws EllipseCreationException, LineCreationException {
     	if (l1.perimeter() == l2.perimeter()) {
-    		throw new EllipseCreationException("'l1' and 'l2' are similar, meaning that this will not creat an Ellipse but a Circle");
+    		throw new EllipseCreationException("'l1' and 'l2' are similar, meaning that this will not create an Ellipse but a Circle");
     	}
     	
     	
